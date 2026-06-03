@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Touchline — Soccer Stat Labeler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0e12; --panel:#14181f; --panel-2:#1b212b; --line:#2a323f;
+    --ink:#e7ecf2; --muted:#8b97a7; --accent:#36e08a;
+    --a:#ff9d3d; --b:#3db5ff; --danger:#ff5d6c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:radial-gradient(1200px 600px at 80% -10%, rgba(54,224,138,.07), transparent 60%), var(--bg);
+    color:var(--ink); font-family:"Archivo",system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+  }
+  .topbar{display:flex; align-items:center; gap:18px; padding:12px 20px; border-bottom:1px solid var(--line); background:var(--panel)}
+  .brand{font-family:"Saira Condensed";font-weight:700;font-size:24px;letter-spacing:1px;text-transform:uppercase}
+  .brand span{color:var(--accent)}
+  .topbar select{margin-left:auto; background:var(--panel-2); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-family:"Archivo"; font-size:14px; min-width:220px}
+  .layout{display:flex; gap:18px; padding:18px; align-items:flex-start}
+  @media (max-width:980px){ .layout{flex-direction:column} }
+  .col-video{flex:1 1 56%; min-width:0}
+  .col-stats{flex:1 1 44%; min-width:0}
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+  video{width:100%; display:block; background:#000; aspect-ratio:16/9}
+  .empty{aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; color:var(--muted); text-align:center; padding:20px; font-size:15px}
+
+  /* seek bar */
+  .seekwrap{padding:12px 14px 0}
+  input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:6px;
+    background:var(--panel-2); border:1px solid var(--line); cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:var(--accent); border:none; cursor:pointer}
+  input[type=range]::-moz-range-thumb{ width:16px; height:16px; border-radius:50%; background:var(--accent); border:none; cursor:pointer}
+
+  .vcontrols{padding:12px 14px; display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+  .clockbox{margin-right:auto; line-height:1}
+  .clock{font-family:"JetBrains Mono"; font-weight:700; font-size:30px; letter-spacing:1px; color:var(--accent)}
+  .subclock{font-family:"JetBrains Mono"; font-size:12px; color:var(--muted); margin-top:3px}
+  button{font-family:"Archivo"; cursor:pointer}
+  .btn{background:var(--panel-2); color:var(--ink); border:1px solid var(--line); border-radius:9px; padding:9px 13px; font-size:14px; font-weight:500; transition:transform .05s ease, background .15s ease}
+  .btn:hover{background:#232c38}
+  .btn:active{transform:translateY(1px)}
+  .btn.play{background:var(--accent); color:#06120b; border-color:transparent; font-weight:600; min-width:78px}
+  .speeds{display:flex; gap:6px; flex-wrap:wrap}
+  .chip{background:transparent; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:6px 11px; font-size:13px; font-family:"JetBrains Mono"}
+  .chip.on{background:var(--ink); color:var(--bg); border-color:var(--ink); font-weight:700}
+
+  .periods{padding:12px 14px 14px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:8px}
+  .prow{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  .pname{font-family:"Saira Condensed"; font-weight:600; text-transform:uppercase; letter-spacing:.5px; font-size:13px; min-width:96px; color:var(--ink)}
+  .anchor{background:var(--panel-2); border:1px solid var(--line); color:var(--muted); border-radius:8px; padding:6px 10px; font-size:12.5px; font-family:"Archivo"}
+  .anchor:hover{background:#232c38}
+  .anchor.on{border-color:var(--accent); color:var(--accent)}
+  .anchor .mono{font-family:"JetBrains Mono"; font-weight:700}
+  .pclear{background:transparent; border:none; color:var(--muted); font-size:15px; padding:0 4px; cursor:pointer}
+  .pclear:hover{color:var(--danger)}
+  .et-toggle{align-self:flex-start; margin-top:2px}
+  .warn{background:rgba(255,93,108,.12); border:1px solid var(--danger); color:var(--danger); border-radius:8px; padding:8px 10px; font-size:12.5px}
+
+  .section{padding:16px}
+  .section + .section{border-top:1px solid var(--line)}
+  .label{font-family:"Saira Condensed"; text-transform:uppercase; letter-spacing:1.5px; font-size:13px; color:var(--muted); margin:0 0 12px}
+
+  .teaminputs{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .teaminputs input{background:var(--panel-2); border:1px solid var(--line); color:var(--ink); border-radius:9px; padding:10px 12px; font-family:"Saira Condensed"; font-weight:600; font-size:18px; width:100%; border-left-width:4px}
+  #teamA-name{border-left-color:var(--a)} #teamB-name{border-left-color:var(--b)}
+
+  /* stat cards: wrap into as many rows as needed, scroll if tall */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(168px,1fr)); gap:10px; max-height:46vh; overflow:auto; padding-right:4px}
+  .card{background:var(--panel-2); border:1px solid var(--line); border-radius:11px; overflow:hidden}
+  .card-head{display:flex; align-items:center; gap:6px; padding:7px 8px 6px 10px; border-bottom:1px solid var(--line)}
+  .card-title{font-family:"Saira Condensed"; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:.5px; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .del{background:transparent; border:none; color:var(--muted); font-size:18px; line-height:1; padding:0 4px; border-radius:6px}
+  .del:hover{color:var(--danger); background:rgba(255,93,108,.12)}
+  .card-counts{display:grid; grid-template-columns:1fr 1fr}
+  .counter{border:none; background:transparent; padding:11px 4px 9px; display:flex; flex-direction:column; align-items:center; gap:2px; transition:background .12s, transform .05s; border-top:3px solid transparent}
+  .counter:active{transform:scale(.95)}
+  .counter.teamA{border-top-color:var(--a)} .counter.teamB{border-top-color:var(--b); border-left:1px solid var(--line)}
+  .counter.teamA:hover{background:rgba(255,157,61,.12)} .counter.teamB:hover{background:rgba(61,181,255,.12)}
+  .counter .num{font-family:"JetBrains Mono"; font-weight:700; font-size:21px; line-height:1; color:var(--ink)}
+  .counter .who{font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px}
+  .counter.flash{animation:flash .4s ease}
+  @keyframes flash{0%{background:var(--accent)}100%{}}
+
+  .addstat{display:flex; gap:8px; margin-top:12px}
+  .addstat input{flex:1; background:var(--panel-2); border:1px solid var(--line); color:var(--ink); border-radius:9px; padding:9px 12px; font-size:14px}
+
+  .archived{margin-top:12px; display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+  .archived .lab{font-size:12px; color:var(--muted)}
+  .arch-chip{background:transparent; border:1px dashed var(--line); color:var(--muted); border-radius:999px; padding:5px 10px; font-size:12.5px}
+  .arch-chip:hover{color:var(--accent); border-color:var(--accent)}
+
+  .actions{display:flex; gap:10px; flex-wrap:wrap}
+  .btn.undo{border-color:var(--danger); color:var(--danger)}
+  .btn.undo:hover{background:rgba(255,93,108,.12)}
+  .btn.export{border-color:var(--accent); color:var(--accent)}
+  .btn.export:hover{background:rgba(54,224,138,.1)}
+
+  .log{max-height:220px; overflow:auto; display:flex; flex-direction:column; gap:6px}
+  .log .row{display:flex; align-items:center; gap:10px; font-size:14px; padding:7px 10px; background:var(--panel-2); border:1px solid var(--line); border-radius:8px}
+  .log .ts{font-family:"JetBrains Mono"; color:var(--accent); font-weight:700; min-width:58px}
+  .log .dot{width:8px; height:8px; border-radius:50%}
+  .log .stat{color:var(--muted); margin-left:auto; font-size:13px}
+  .log .none{color:var(--muted); font-size:13px; padding:10px 2px}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">Touch<span>line</span></div>
+    <select id="videoSelect"><option value="">Loading videos…</option></select>
+  </div>
+
+  <div class="layout">
+    <div class="col-video">
+      <div class="panel">
+        <div id="videoHolder">
+          <div class="empty" id="videoEmpty">Select a match video to begin.<br>Drop .mp4 files into the <code>match_samples</code> folder.</div>
+          <video id="video" style="display:none" preload="metadata"></video>
+        </div>
+
+        <div class="seekwrap"><input type="range" id="seek" min="0" max="100" value="0" step="0.1"></div>
+
+        <div class="vcontrols">
+          <div class="clockbox">
+            <div class="clock" id="clock">00:00</div>
+            <div class="subclock" id="subclock">video 00:00</div>
+          </div>
+          <button class="btn play" id="playBtn">Play</button>
+          <button class="btn" data-skip="-60">«1m</button>
+          <button class="btn" data-skip="-10">«10s</button>
+          <button class="btn" data-skip="-5">«5s</button>
+          <button class="btn" data-skip="5">5s»</button>
+          <button class="btn" data-skip="10">10s»</button>
+          <button class="btn" data-skip="60">1m»</button>
+          <div class="speeds" id="speeds">
+            <button class="chip" data-rate="0.5">0.5×</button>
+            <button class="chip on" data-rate="1">1×</button>
+            <button class="chip" data-rate="1.5">1.5×</button>
+            <button class="chip" data-rate="2">2×</button>
+            <button class="chip" data-rate="4">4×</button>
+          </div>
+        </div>
+
+        <div class="periods" id="periods"></div>
+      </div>
+    </div>
+
+    <div class="col-stats">
+      <div class="panel">
+        <div class="section">
+          <p class="label">Teams</p>
+          <div class="teaminputs">
+            <input id="teamA-name" type="text" spellcheck="false">
+            <input id="teamB-name" type="text" spellcheck="false">
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="label">Tap a counter to log an event at the current time</p>
+          <div class="grid" id="statGrid"></div>
+          <div class="addstat">
+            <input id="newStat" type="text" placeholder="add a statistic, e.g. corners">
+            <button class="btn" id="addStatBtn">Add</button>
+          </div>
+          <div class="archived" id="archived"></div>
+        </div>
+
+        <div class="section">
+          <div class="actions">
+            <button class="btn undo" id="undoBtn">↶ Undo last</button>
+            <button class="btn export" id="exportJson">Export JSON</button>
+            <button class="btn export" id="exportCsv">Export CSV</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="label">Events <span id="evCount" style="color:var(--accent)"></span></p>
+          <div class="log" id="log"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+const video = document.getElementById('video');
+const clock = document.getElementById('clock');
+const subclock = document.getElementById('subclock');
+const seek = document.getElementById('seek');
+let currentVideo = null;
+let project = null;
+let dragging = false;   // true while the user drags the seek bar
+
+const pad = n => String(n).padStart(2,'0');
+const fmt = ms => { const s=Math.floor(Math.max(0,ms)/1000); return pad(Math.floor(s/60))+':'+pad(s%60); };
+const nowMs = () => Math.round(video.currentTime * 1000);          // raw video position
+const stoppage = ms => { const s=Math.floor(ms/1000); return '+'+Math.floor(s/60)+':'+pad(s%60); };
+const PLABEL = {first_half:'First half', second_half:'Second half', et_first:'Extra time 1', et_second:'Extra time 2'};
+const PBREAK = {first_half:['HT','Half time'], second_half:['Break','Before extra time'], et_first:['ET break','Extra-time break']};
+
+function matchClock(v, periods){
+  const active = (periods||[]).filter(p=>p.video_start_ms!=null).slice().sort((a,b)=>a.video_start_ms-b.video_start_ms);
+  if(!active.length) return {phase:'unset', display:'—', label:'No kickoff set'};
+  if(v < active[0].video_start_ms) return {phase:'pre', display:'—', label:'Pre-match'};
+  for(let i=0;i<active.length;i++){
+    const p=active[i], start=p.video_start_ms;
+    const nxt = i+1<active.length ? active[i+1].video_start_ms : null;
+    const playEnd = p.video_end_ms!=null ? p.video_end_ms : (nxt!=null?nxt:Infinity);
+    if(v>=start && v<=playEnd){
+      const elapsed=v-start, reg=p.regulation_min*60000, base=p.base_min*60000;
+      if(elapsed<=reg) return {phase:'play', display:fmt(base+elapsed), label:PLABEL[p.type]};
+      return {phase:'stoppage', display:fmt(base+reg)+' '+stoppage(elapsed-reg), label:PLABEL[p.type]};
+    }
+    if(nxt!=null && playEnd!==Infinity && v>playEnd && v<nxt){
+      const b=PBREAK[p.type]||['Break','Break']; return {phase:'break', display:b[0], label:b[1]};
+    }
+  }
+  return {phase:'post', display:'—', label:'Full time'};
+}
+
+async function api(path, opts){
+  const r = await fetch(path, opts);
+  if(!r.ok){ alert('Error: ' + (await r.text())); throw new Error(path); }
+  return r.status === 204 ? null : r.json();
+}
+
+async function init(){
+  const {videos} = await api('/api/videos');
+  const sel = document.getElementById('videoSelect');
+  if(videos.length === 0){ sel.innerHTML = '<option value="">No .mp4 in match_samples/</option>'; return; }
+  sel.innerHTML = '<option value="">Select a video…</option>' + videos.map(v => `<option value="${v}">${v}</option>`).join('');
+  sel.onchange = () => sel.value && loadVideo(sel.value);
+}
+
+async function loadVideo(name){
+  currentVideo = name;
+  project = await api('/api/project?video=' + encodeURIComponent(name));
+  document.getElementById('videoEmpty').style.display = 'none';
+  video.style.display = 'block';
+  video.src = '/video/' + encodeURIComponent(name);
+  video.onloadedmetadata = () => {
+    seek.max = video.duration || 0;
+    if(project.position_ms){ video.currentTime = project.position_ms/1000; }
+    updateClock();
+  };
+  render();
+}
+
+function updateClock(){
+  const mc = matchClock(nowMs(), project && project.periods);
+  clock.textContent = mc.display;
+  subclock.textContent = 'video ' + fmt(nowMs()) + ' · ' + mc.label;
+  clock.style.color = mc.phase==='stoppage' ? '#ef9f27'
+                    : (mc.phase==='play' ? 'var(--accent)' : 'var(--muted)');
+  if(!dragging) seek.value = video.currentTime || 0;
+}
+
+function render(){
+  document.getElementById('teamA-name').value = project.teams[0];
+  document.getElementById('teamB-name').value = project.teams[1];
+  renderPeriods();
+
+  // stat cards
+  const grid = document.getElementById('statGrid');
+  grid.innerHTML = project.stats.map(stat => {
+    const a = project.counts[project.teams[0]][stat];
+    const b = project.counts[project.teams[1]][stat];
+    const S = encodeURIComponent(stat);
+    return `<div class="card">
+      <div class="card-head"><span class="card-title">${stat.replace(/_/g,' ')}</span>
+        <button class="del" data-del="${S}" title="delete (data kept)">×</button></div>
+      <div class="card-counts">
+        <button class="counter teamA" data-team="${encodeURIComponent(project.teams[0])}" data-stat="${S}"><span class="num">${a}</span><span class="who">${project.teams[0]}</span></button>
+        <button class="counter teamB" data-team="${encodeURIComponent(project.teams[1])}" data-stat="${S}"><span class="num">${b}</span><span class="who">${project.teams[1]}</span></button>
+      </div></div>`;
+  }).join('') || '<div class="log"><div class="none">No statistics. Add one below.</div></div>';
+
+  grid.querySelectorAll('.counter').forEach(btn =>
+    btn.onclick = () => logEvent(decodeURIComponent(btn.dataset.team), decodeURIComponent(btn.dataset.stat), btn));
+  grid.querySelectorAll('.del').forEach(btn =>
+    btn.onclick = () => configChange({delete_stat: decodeURIComponent(btn.dataset.del)}));
+
+  // archived stats (restore by tapping)
+  const arch = document.getElementById('archived');
+  if((project.archived_stats || []).length === 0){ arch.innerHTML = ''; }
+  else {
+    arch.innerHTML = '<span class="lab">Archived (tap to restore):</span>' +
+      project.archived_stats.map(s => `<button class="arch-chip" data-restore="${encodeURIComponent(s)}">${s.replace(/_/g,' ')} ↩</button>`).join('');
+    arch.querySelectorAll('.arch-chip').forEach(btn =>
+      btn.onclick = () => configChange({restore_stat: decodeURIComponent(btn.dataset.restore)}));
+  }
+
+  // event log (match time)
+  const log = document.getElementById('log');
+  document.getElementById('evCount').textContent = project.events.length ? '· ' + project.events.length : '';
+  if(project.events.length === 0){ log.innerHTML = '<div class="none">No events logged yet.</div>'; }
+  else {
+    log.innerHTML = project.events.slice().reverse().map(ev => {
+      const color = ev.team === project.teams[0] ? 'var(--a)' : 'var(--b)';
+      return `<div class="row"><span class="ts">${ev.match_display}</span>
+        <span class="dot" style="background:${color}"></span>${ev.team}
+        <span class="stat">${ev.stat.replace(/_/g,' ')}</span></div>`;
+    }).join('');
+  }
+}
+
+function anchorBtn(type, which, icon, word, val){
+  const set = val != null;
+  const inner = set ? `${word} <span class="mono">${fmt(val)}</span>` : `${icon} set ${word}`;
+  const clear = set ? `<button class="pclear" data-period="${type}" data-which="${which}" title="clear">×</button>` : '';
+  return `<button class="anchor ${set?'on':''}" data-period="${type}" data-which="${which}">${inner}</button>${clear}`;
+}
+
+function renderPeriods(){
+  const wrap = document.getElementById('periods');
+  const hasET = project.periods.some(p => p.type === 'et_first');
+  const rows = project.periods.map(p =>
+    `<div class="prow"><span class="pname">${PLABEL[p.type]}</span>
+      ${anchorBtn(p.type,'start','⚑','kick',p.video_start_ms)}
+      ${anchorBtn(p.type,'end','⏹','whistle',p.video_end_ms)}</div>`).join('');
+  const etBtn = `<button class="btn et-toggle" id="etToggle">${hasET?'Remove extra time':'+ Add extra time'}</button>`;
+  const warn = (project.warnings && project.warnings.length)
+    ? `<div class="warn">⚠ ${project.warnings.join(' · ')}</div>` : '';
+  wrap.innerHTML = `<p class="label" style="margin:0 0 2px">Periods — mark each kick &amp; whistle</p>${rows}${etBtn}${warn}`;
+  wrap.querySelectorAll('.anchor').forEach(b => b.onclick = () =>
+    configChange({set_anchor:{period:b.dataset.period, which:b.dataset.which, ms:nowMs()}}));
+  wrap.querySelectorAll('.pclear').forEach(b => b.onclick = () =>
+    configChange({set_anchor:{period:b.dataset.period, which:b.dataset.which, ms:null}}));
+  document.getElementById('etToggle').onclick = () =>
+    configChange(hasET ? {remove_extra_time:true} : {add_extra_time:true});
+}
+
+async function logEvent(team, stat, btn){
+  if(!currentVideo) return;
+  btn.classList.remove('flash'); void btn.offsetWidth; btn.classList.add('flash');
+  project = await api('/api/event', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({video:currentVideo, team, stat, timestamp_ms:nowMs()})});
+  render();
+}
+
+async function configChange(payload){
+  if(!currentVideo) return;
+  project = await api('/api/config', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({video:currentVideo, ...payload})});
+  render(); updateClock();
+}
+
+// ---- playback controls ----
+document.getElementById('playBtn').onclick = () => video.paused ? video.play() : video.pause();
+video.onplay  = () => document.getElementById('playBtn').textContent = 'Pause';
+video.onpause = () => { document.getElementById('playBtn').textContent = 'Play'; savePosition(); };
+video.ontimeupdate = updateClock;
+
+document.querySelectorAll('[data-skip]').forEach(b =>
+  b.onclick = () => { video.currentTime = Math.max(0, video.currentTime + Number(b.dataset.skip)); });
+
+document.getElementById('speeds').onclick = e => {
+  const b = e.target.closest('[data-rate]'); if(!b) return;
+  video.playbackRate = Number(b.dataset.rate);
+  document.querySelectorAll('#speeds .chip').forEach(c => c.classList.toggle('on', c === b));
+};
+
+// seek bar
+seek.addEventListener('pointerdown', () => dragging = true);
+seek.addEventListener('pointerup',   () => dragging = false);
+seek.addEventListener('input', () => { video.currentTime = Number(seek.value); updateClock(); });
+
+// undo / add stat / teams / export
+document.getElementById('undoBtn').onclick = async () => {
+  if(!currentVideo) return;
+  project = await api('/api/undo', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({video:currentVideo})});
+  render();
+};
+document.getElementById('addStatBtn').onclick = async () => {
+  const inp = document.getElementById('newStat');
+  const name = inp.value.trim().toLowerCase().replace(/\s+/g,'_');
+  if(!name) return;
+  await configChange({add_stat:name}); inp.value = '';
+};
+function renameTeams(){
+  const teams = [document.getElementById('teamA-name').value.trim() || 'Team A',
+                 document.getElementById('teamB-name').value.trim() || 'Team B'];
+  configChange({teams});
+}
+document.getElementById('teamA-name').onchange = renameTeams;
+document.getElementById('teamB-name').onchange = renameTeams;
+document.getElementById('exportJson').onclick = () => currentVideo && (location.href = '/api/export/json?video=' + encodeURIComponent(currentVideo));
+document.getElementById('exportCsv').onclick  = () => currentVideo && (location.href = '/api/export/csv?video=' + encodeURIComponent(currentVideo));
+
+// ---- save playback position for resume ----
+function savePosition(){
+  if(!currentVideo) return;
+  const body = JSON.stringify({video:currentVideo, position_ms:nowMs()});
+  navigator.sendBeacon('/api/position', new Blob([body], {type:'application/json'}));
+}
+window.addEventListener('beforeunload', savePosition);
+
+// ---- keyboard ergonomics (ignored while typing) ----
+document.addEventListener('keydown', e => {
+  if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+  if(e.code === 'Space'){ e.preventDefault(); video.paused ? video.play() : video.pause(); }
+  if(e.code === 'ArrowLeft')  video.currentTime = Math.max(0, video.currentTime - 5);
+  if(e.code === 'ArrowRight') video.currentTime += 5;
+});
+
+init();
+</script>
+</body>
+</html>
