@@ -63,11 +63,4 @@ saved automatically, so you can quit and resume.
 - `templates/index.html` — the single-page UI.
 - `test_core.py` — run with `python test_core.py` (14 tests).
 
-## Deliberately left out (per the simplicity guideline — ask if you want them)
 
-- Editing/deleting an arbitrary event (only last-event undo is supported).
-- Redo.
-- More than two teams (the app is two-team by design).
-
-The event log panel and the keyboard shortcuts were small additions on top of
-what was specified; both are easy to remove.
