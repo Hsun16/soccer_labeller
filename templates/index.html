@@ -23,6 +23,93 @@
   .brand{font-family:"Saira Condensed";font-weight:700;font-size:24px;letter-spacing:1px;text-transform:uppercase}
   .brand span{color:var(--accent)}
   .topbar select{margin-left:auto; background:var(--panel-2); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-family:"Archivo"; font-size:14px; min-width:220px}
+  .modes{display:flex; gap:4px; background:var(--panel-2); border:1px solid var(--line); border-radius:9px; padding:3px}
+  .modebtn{background:transparent; border:none; color:var(--muted); border-radius:7px; padding:6px 14px; font-size:13px; font-weight:600; font-family:"Saira Condensed"; text-transform:uppercase; letter-spacing:.5px}
+  .modebtn.on{background:var(--accent); color:#06120b}
+
+  /* charts view */
+  .charts-top{display:flex; align-items:center; gap:14px; padding:14px 18px; border-bottom:1px solid var(--line)}
+  .cscore{font-family:"Saira Condensed"; text-transform:uppercase; letter-spacing:.5px; font-size:13px; color:var(--muted); display:flex; align-items:center; gap:8px}
+  .cscore input{background:var(--panel-2); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:8px 10px; font-family:"JetBrains Mono"; font-weight:700; text-align:center}
+  .charts-top .export{margin-left:auto}
+  .charts-body{display:grid; grid-template-columns:230px 1fr; gap:16px; padding:16px 18px; align-items:start}
+  @media (max-width:900px){ .charts-body{grid-template-columns:1fr} }
+  .palette{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px}
+  .palette select, .palette input[type=text], .palette input[type=number]{background:var(--panel-2); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:8px 10px; font-size:14px; width:100%}
+  .palette select{margin-bottom:8px}
+  .cfg-row{margin:8px 0}
+  .cfg-row .cfg-lab{display:block; font-size:12px; color:var(--muted); margin-bottom:4px}
+  .statpicks{display:flex; flex-direction:column; gap:4px; max-height:160px; overflow:auto; background:var(--panel-2); border:1px solid var(--line); border-radius:8px; padding:8px}
+  .statpicks label{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--ink)}
+  .orderpick{display:flex; flex-direction:column; gap:4px; max-height:200px; overflow:auto; background:var(--panel-2); border:1px solid var(--line); border-radius:8px; padding:8px}
+  .pickrow{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--ink)}
+  .pickrow label{flex:1; cursor:pointer}
+  .pmove{display:flex; gap:3px}
+  .pmv{background:var(--panel); border:1px solid var(--line); color:var(--muted); border-radius:5px; padding:0 7px; cursor:pointer; font-size:11px; line-height:18px}
+  .pmv:hover{color:var(--ink); border-color:var(--accent)}
+  .combo-row{display:flex; align-items:center; gap:6px; font-size:12px; padding:3px 0}
+  .combo-name{font-weight:600; color:var(--ink); text-transform:uppercase; letter-spacing:.4px}
+  .combo-parts{flex:1; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .combo-del{background:none; border:none; color:var(--muted); cursor:pointer; font-size:14px}
+  .combo-del:hover{color:#e66}
+  .cfg-hint{font-weight:400; color:var(--muted); text-transform:none; letter-spacing:0; font-size:11px}
+  .cm-tabs{display:flex; gap:6px; margin-right:auto}
+  .shotmap-body{display:grid; grid-template-columns:260px 1fr; gap:16px; padding:16px 18px; align-items:start}
+  @media (max-width:900px){ .shotmap-body{grid-template-columns:1fr} }
+  .shot-queue{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px}
+  .shot-pitches{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media (max-width:760px){ .shot-pitches{grid-template-columns:1fr} }
+  .pitch-card{background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px}
+  .pitch-card canvas{width:100%; height:auto; display:block}
+  .pitch-title{font-family:"Saira Condensed"; font-weight:600; font-size:15px; text-transform:uppercase; letter-spacing:.5px; color:#1c1c1a; margin-bottom:8px}
+  .shot-legend{display:flex; flex-wrap:wrap; gap:16px; padding:4px 18px 18px; align-items:center}
+  .shot-legend .item{display:flex; align-items:center; gap:6px; font-size:13px; color:var(--muted)}
+  .shot-legend .swatch{width:12px; height:12px; border-radius:50%}
+  .shotrow{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--ink); padding:3px 0}
+  .shotrow .mn{font-family:"JetBrains Mono"; color:var(--accent); min-width:48px}
+  .shotrow .badge{margin-left:auto; font-size:11px; padding:1px 7px; border-radius:10px; border:1px solid var(--line); color:var(--muted)}
+  .shotrow .badge.done{color:#fff; border:none}
+  .mark-body{display:grid; grid-template-columns:1fr 460px; gap:16px; padding:16px 18px; align-items:start}
+  @media (max-width:1000px){ .mark-body{grid-template-columns:1fr} }
+  #markVideoSlot{background:#000; border-radius:12px; overflow:hidden; min-height:120px}
+  .mark-scrub{display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-top:10px}
+  .mark-pitch{background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px}
+  .mark-pitch canvas{width:100%; max-width:560px; height:auto; display:block; margin:0 auto; cursor:crosshair}
+  .mark-results{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+  .mark-results .res.on{color:#fff; border-color:transparent}
+  .mark-flags{display:flex; gap:6px; margin-top:10px; align-items:center}
+  .mark-flags .flag.on, .mark-view .flag.on{background:var(--accent); color:#fff; border-color:transparent}
+  .mark-deflbl{font-size:12px; color:var(--muted); display:flex; align-items:center; gap:5px}
+  .mark-sel{background:#0e1a13; color:var(--ink); border:1px solid #2b3a30; border-radius:6px; padding:3px 6px; font-size:12px}
+  .jumpwrap{margin-top:10px; border-top:1px solid #1d2a22; padding-top:8px}
+  .jump-stats{display:flex; flex-wrap:wrap; gap:6px}
+  .jump-stats .jbtn{font-size:13px; padding:4px 11px; border-radius:999px; cursor:pointer; background:#13211a; color:var(--ink); border:1px solid #2b3a30}
+  .jump-stats .jbtn.on{background:var(--accent); color:#fff; border-color:transparent}
+  .jump-list{margin-top:8px; max-height:240px; overflow:auto; display:flex; flex-direction:column; gap:2px}
+  .jump-list .jrow{display:flex; gap:9px; align-items:center; font-size:14px; padding:5px 8px; border-radius:6px; cursor:pointer; background:#0e1a13}
+  .jump-list .jrow:hover{background:#16261d}
+  .jump-list .jrow .mn{font-family:"JetBrains Mono",monospace; font-size:14px; color:var(--muted)}
+  .jump-list .jrow .jdel{margin-left:auto; background:none; border:none; color:var(--muted); font-size:16px; line-height:1; cursor:pointer; padding:2px 6px; border-radius:5px; opacity:0; transition:opacity .1s}
+  .jump-list .jrow:hover .jdel{opacity:1}
+  .jump-list .jrow .jdel:hover{background:#3a1414; color:#ff6b6b}
+  .mark-view{margin-top:8px; display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+  .mark-modelwrap{font-size:12px; color:var(--muted); display:inline-flex; gap:5px; align-items:center}
+  .mark-modelwrap .flag[disabled]{opacity:.4; cursor:not-allowed}
+  .mark-xg{margin-left:auto; font-family:"JetBrains Mono"; font-size:13px; color:var(--ink)}
+  .mark-xg b{color:var(--accent)}
+  .mark-actions{display:flex; gap:8px; margin-top:12px; align-items:center}
+  .board{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; align-content:start}
+  .board:empty::after{content:"No charts yet — add one from the left."; color:var(--muted); font-size:14px}
+  .chart-card{background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px 14px; grid-column:span 1}
+  .chart-card.full,.chart-card.tall{grid-column:span 2}
+  @media (max-width:900px){ .board{grid-template-columns:1fr} .chart-card.full,.chart-card.tall,.chart-card{grid-column:span 1} }
+  .chart-head{display:flex; align-items:center; gap:8px; margin-bottom:8px}
+  .chart-head .chart-title{flex:1; background:transparent; border:none; border-bottom:1px solid transparent; color:#1c1c1a; font-family:"Saira Condensed"; font-weight:600; font-size:15px; padding:2px 0}
+  .chart-head .chart-title:hover,.chart-head .chart-title:focus{border-bottom-color:#ccc; outline:none}
+  .chart-head .cact{background:transparent; border:none; color:#999; cursor:pointer; font-size:14px; padding:2px 5px; border-radius:6px}
+  .chart-head .cact:hover{background:#eee; color:#333}
+  .chart-canvas-wrap{position:relative; height:240px}
+  .chart-card.tall .chart-canvas-wrap{height:480px}
   .layout{display:flex; gap:18px; padding:18px; align-items:flex-start}
   @media (max-width:980px){ .layout{flex-direction:column} }
   .col-video{flex:1 1 56%; min-width:0}
@@ -63,6 +150,32 @@
   .et-toggle{align-self:flex-start; margin-top:2px}
   .warn{background:rgba(255,93,108,.12); border:1px solid var(--danger); color:var(--danger); border-radius:8px; padding:8px 10px; font-size:12.5px}
 
+  /* possession frame around the video */
+  .frame{border:4px solid transparent; border-radius:14px; overflow:hidden; background:#000; transition:border-color .15s}
+
+  /* possession controls */
+  .poss{padding:12px 14px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:8px}
+  .possrow{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+  .possbtn{border:1px solid var(--line); background:var(--panel-2); color:var(--ink); border-radius:9px; padding:9px 14px; font-weight:600; font-size:14px; font-family:"Saira Condensed"; letter-spacing:.5px; text-transform:uppercase; border-bottom:3px solid var(--c,var(--line))}
+  .possbtn:hover{background:#232c38}
+  .possbtn.on{background:var(--c); color:#06120b; border-color:var(--c)}
+  .possbtn.dead{border-bottom-color:var(--muted)}
+  .possbtn.dead.on{background:var(--muted); color:#06120b}
+  .possbtn kbd{font-family:"JetBrains Mono",monospace; font-size:10px; opacity:.6; border:1px solid currentColor; border-radius:3px; padding:0 3px; margin-left:3px; vertical-align:middle}
+  .posspct{margin-left:auto; font-family:"JetBrains Mono"; font-weight:700; font-size:14px; color:var(--muted)}
+
+  /* recycling bin */
+  .bin-item{display:inline-flex; align-items:center; gap:4px; background:var(--panel-2); border:1px dashed var(--line); border-radius:999px; padding:3px 5px 3px 12px; font-size:12.5px; color:var(--muted)}
+  .bin-restore,.bin-del{border:none; background:transparent; cursor:pointer; font-size:12px; border-radius:999px; padding:3px 8px}
+  .bin-restore{color:var(--accent)} .bin-restore:hover{background:rgba(54,224,138,.12)}
+  .bin-del{color:var(--danger)} .bin-del:hover{background:rgba(255,93,108,.12)}
+
+  /* team colour pickers */
+  .teamrow{display:flex; gap:8px; align-items:center}
+  .color{width:38px; height:38px; min-width:38px; padding:2px; border:1px solid var(--line); border-radius:8px; background:var(--panel-2); cursor:pointer}
+  .color::-webkit-color-swatch{border:none; border-radius:5px}
+  .color::-moz-color-swatch{border:none; border-radius:5px}
+
   .section{padding:16px}
   .section + .section{border-top:1px solid var(--line)}
   .label{font-family:"Saira Condensed"; text-transform:uppercase; letter-spacing:1.5px; font-size:13px; color:var(--muted); margin:0 0 12px}
@@ -76,6 +189,9 @@
   .card{background:var(--panel-2); border:1px solid var(--line); border-radius:11px; overflow:hidden}
   .card-head{display:flex; align-items:center; gap:6px; padding:7px 8px 6px 10px; border-bottom:1px solid var(--line)}
   .card-title{font-family:"Saira Condensed"; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:.5px; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .grip{cursor:grab; color:var(--muted); font-size:13px; line-height:1; user-select:none}
+  .grip:active{cursor:grabbing}
+  .card.drop-target{outline:2px dashed var(--accent); outline-offset:-2px}
   .del{background:transparent; border:none; color:var(--muted); font-size:18px; line-height:1; padding:0 4px; border-radius:6px}
   .del:hover{color:var(--danger); background:rgba(255,93,108,.12)}
   .card-counts{display:grid; grid-template-columns:1fr 1fr}
@@ -92,9 +208,11 @@
   .addstat input{flex:1; background:var(--panel-2); border:1px solid var(--line); color:var(--ink); border-radius:9px; padding:9px 12px; font-size:14px}
 
   .archived{margin-top:12px; display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+  .templates{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+  .templates .lab{font-size:12px; color:var(--muted)}
+  .templates select{background:var(--panel-2); border:1px solid var(--line); color:var(--ink); border-radius:7px; padding:5px 8px; font-size:13px; min-width:140px}
+  .btn.small{padding:5px 9px; font-size:12px}
   .archived .lab{font-size:12px; color:var(--muted)}
-  .arch-chip{background:transparent; border:1px dashed var(--line); color:var(--muted); border-radius:999px; padding:5px 10px; font-size:12.5px}
-  .arch-chip:hover{color:var(--accent); border-color:var(--accent)}
 
   .actions{display:flex; gap:10px; flex-wrap:wrap}
   .btn.undo{border-color:var(--danger); color:var(--danger)}
@@ -105,23 +223,48 @@
   .log{max-height:220px; overflow:auto; display:flex; flex-direction:column; gap:6px}
   .log .row{display:flex; align-items:center; gap:10px; font-size:14px; padding:7px 10px; background:var(--panel-2); border:1px solid var(--line); border-radius:8px}
   .log .ts{font-family:"JetBrains Mono"; color:var(--accent); font-weight:700; min-width:58px}
+  .log .seekts{cursor:pointer}
+  .log .seekts:hover{text-decoration:underline; filter:brightness(1.2)}
   .log .dot{width:8px; height:8px; border-radius:50%}
   .log .stat{color:var(--muted); margin-left:auto; font-size:13px}
   .log .none{color:var(--muted); font-size:13px; padding:10px 2px}
+  .tboard-wrap{margin-top:10px}
+  .tbar{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px}
+  .tgroup{display:flex; gap:5px; align-items:center; padding-right:10px; border-right:1px solid #1d2a22}
+  .tgroup:last-child{border-right:none}
+  .tbtn{font-size:13px; padding:5px 10px; border-radius:7px; cursor:pointer; background:#13211a; color:var(--ink); border:1px solid #2b3a30; white-space:nowrap}
+  .tbtn:hover{background:#16261d}
+  .tbtn.on{background:var(--accent); color:#fff; border-color:transparent}
+  .tswatches{display:inline-flex; gap:4px; align-items:center}
+  .tsw{width:20px; height:20px; border-radius:5px; cursor:pointer; border:2px solid transparent}
+  .tsw.on{border-color:#fff; box-shadow:0 0 0 1px #000}
+  .tsvg-holder{background:#0e1a13; border:1px solid #1d2a22; border-radius:10px; padding:8px; overflow:hidden}
+  #tSvg{width:100%; height:auto; display:block; touch-action:none; user-select:none}
+  #tSvg text{user-select:none}
+  .tk-hit{cursor:grab}
+  .tk-hit:active{cursor:grabbing}
 </style>
 </head>
 <body>
   <div class="topbar">
     <div class="brand">Touch<span>line</span></div>
+    <div class="modes">
+      <button class="modebtn on" id="modeLabel">Label</button>
+      <button class="modebtn" id="modeCharts">Charts</button>
+      <button class="modebtn" id="modeShots">Shot map</button>
+      <button class="modebtn" id="modeTactics">Board</button>
+    </div>
     <select id="videoSelect"><option value="">Loading videos…</option></select>
   </div>
 
-  <div class="layout">
+  <div class="layout" id="labelView">
     <div class="col-video">
       <div class="panel">
-        <div id="videoHolder">
-          <div class="empty" id="videoEmpty">Select a match video to begin.<br>Drop .mp4 files into the <code>match_samples</code> folder.</div>
-          <video id="video" style="display:none" preload="metadata"></video>
+        <div class="frame" id="frame">
+          <div id="videoHolder">
+            <div class="empty" id="videoEmpty">Select a match video to begin.<br>Drop .mp4 files into the <code>match_samples</code> folder.</div>
+            <video id="video" style="display:none" preload="metadata"></video>
+          </div>
         </div>
 
         <div class="seekwrap"><input type="range" id="seek" min="0" max="100" value="0" step="0.1"></div>
@@ -147,7 +290,13 @@
           </div>
         </div>
 
+        <div class="poss" id="poss"></div>
         <div class="periods" id="periods"></div>
+        <div class="jumpwrap">
+          <p class="label" style="margin:8px 0 4px">Jump to an event</p>
+          <div class="jump-stats" id="jumpStats"></div>
+          <div class="jump-list" id="jumpList"></div>
+        </div>
       </div>
     </div>
 
@@ -156,8 +305,11 @@
         <div class="section">
           <p class="label">Teams</p>
           <div class="teaminputs">
-            <input id="teamA-name" type="text" spellcheck="false">
-            <input id="teamB-name" type="text" spellcheck="false">
+            <div class="teamrow"><input class="color" id="teamA-color" type="color"><input id="teamA-name" type="text" spellcheck="false"></div>
+            <div class="teamrow"><input class="color" id="teamB-color" type="color"><input id="teamB-name" type="text" spellcheck="false"></div>
+          </div>
+          <div class="teamrow" style="margin-top:8px">
+            <input id="matchLabel" type="text" spellcheck="false" placeholder="match label (optional — share across split videos)" style="width:100%">
           </div>
         </div>
 
@@ -167,6 +319,13 @@
           <div class="addstat">
             <input id="newStat" type="text" placeholder="add a statistic, e.g. corners">
             <button class="btn" id="addStatBtn">Add</button>
+          </div>
+          <div class="templates" id="templatesBar">
+            <span class="lab">Templates</span>
+            <select id="templateSel" title="saved stat sets"></select>
+            <button class="btn small" id="applyTemplate" title="replace the current stats with this template">Apply</button>
+            <button class="btn small" id="delTemplate" title="delete this template">×</button>
+            <button class="btn small" id="saveTemplate" title="save the current stats as a reusable template">Save current…</button>
           </div>
           <div class="archived" id="archived"></div>
         </div>
@@ -187,6 +346,192 @@
     </div>
   </div>
 
+  <div id="chartsView" style="display:none">
+    <div class="charts-top">
+      <div class="cm-tabs">
+        <button class="modebtn on" id="tabThis">This match</button>
+        <button class="modebtn" id="tabCross">Across matches</button>
+      </div>
+      <label class="cscore">Score <input id="scoreInput" type="text" placeholder="2 – 1" style="width:90px"></label>
+      <button class="btn export" id="exportBoard">⬇ Export board (PNG)</button>
+    </div>
+    <div class="charts-body" id="singleBody">
+      <div class="palette">
+        <p class="label">Add chart</p>
+        <select id="chartType">
+          <option value="timeline">Net timeline</option>
+          <option value="cumulative">Cumulative line</option>
+          <option value="comparison">Comparison bars</option>
+          <option value="attacksides">Attack sides</option>
+          <option value="headtohead">Head-to-head</option>
+          <option value="possession">Possession by period</option>
+          <option value="doughnut">Doughnut</option>
+        </select>
+        <div id="chartConfig"></div>
+        <input id="chartTitle" type="text" placeholder="chart title (optional)" style="width:100%; margin-top:8px">
+        <button class="btn" id="addChartBtn" style="width:100%; margin-top:8px">+ Add to board</button>
+        <div class="combo-mgr">
+          <p class="label" style="margin:14px 0 4px">Combined stats <span class="cfg-hint">sum several stats into one</span></p>
+          <div id="comboList"></div>
+          <input id="comboName" type="text" placeholder="name e.g. attack" style="width:100%">
+          <div class="statpicks" id="comboParts" style="margin:6px 0; max-height:120px; overflow:auto"></div>
+          <button class="btn" id="addComboBtn" style="width:100%">+ Define combined stat</button>
+        </div>
+      </div>
+      <div class="board" id="board"></div>
+    </div>
+
+    <div class="charts-body" id="crossBody" style="display:none">
+      <div class="palette">
+        <p class="label">My team (tracked across matches)</p>
+        <div style="display:flex; gap:6px">
+          <input id="trackedTeam" type="text" placeholder="e.g. ECFC" style="flex:1">
+          <button class="btn small" id="saveTracked">Set</button>
+        </div>
+        <p class="label" style="margin-top:12px">Matches <span class="cfg-hint">pick any subset</span></p>
+        <div class="orderpick" id="matchPick" style="max-height:200px"></div>
+        <p class="label" style="margin-top:12px">Metric</p>
+        <select id="cmKind">
+          <option value="count">Stat total (sum of chosen stats)</option>
+          <option value="possession">Possession %</option>
+          <option value="success">Success rate (made / attempts)</option>
+        </select>
+        <div id="cmConfig"></div>
+        <input id="cmTitle" type="text" placeholder="chart title (optional)" style="width:100%; margin-top:8px">
+        <button class="btn" id="cmPlot" style="width:100%; margin-top:8px">Plot across matches</button>
+        <button class="btn export" id="cmExport" style="width:100%; margin-top:6px">⬇ Export PNG</button>
+        <p id="cmNote" class="cfg-hint" style="margin-top:8px"></p>
+      </div>
+      <div class="board">
+        <div class="chart-card full"><div class="chart-canvas-wrap" style="height:440px"><canvas id="cmCanvas"></canvas></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="shotsView" style="display:none">
+    <div id="shotOutput">
+      <div class="charts-top">
+        <p class="label" style="margin:0">Shot map <span class="cfg-hint">half pitch, goal at top; goals show as a ball</span></p>
+        <button class="btn" id="markShots">✎ Mark shots</button>
+        <button class="btn export" id="exportShots">⬇ Export both (PNG)</button>
+      </div>
+      <div class="shotmap-body">
+        <div class="shot-queue">
+          <p class="label">Shots <span id="shotProgress" class="cfg-hint"></span></p>
+          <div class="orderpick" id="shotList" style="max-height:62vh"></div>
+        </div>
+        <div class="shot-pitches">
+          <div class="pitch-card"><div class="pitch-title" id="pitchTitleA"></div><canvas id="pitchA" width="600" height="469"></canvas></div>
+          <div class="pitch-card"><div class="pitch-title" id="pitchTitleB"></div><canvas id="pitchB" width="600" height="469"></canvas></div>
+        </div>
+      </div>
+      <div class="shot-legend" id="shotLegend"></div>
+    </div>
+
+    <div id="markPanel" style="display:none">
+      <div class="charts-top">
+        <button class="btn" id="markPrev">‹ Prev</button>
+        <span id="markInfo" class="label" style="margin:0"></span>
+        <button class="btn" id="markNext">Next ›</button>
+        <button class="btn export" id="markDone" style="margin-left:auto">✓ Done</button>
+      </div>
+      <div class="mark-body">
+        <div class="mark-video">
+          <div id="markVideoSlot"></div>
+          <div class="mark-scrub">
+            <button class="btn small" data-d="-10">−10s</button>
+            <button class="btn small" data-d="-5">−5s</button>
+            <button class="btn small" data-d="-1">−1s</button>
+            <button class="btn small" id="markPlay">▶ / ❚❚</button>
+            <button class="btn small" data-d="1">+1s</button>
+            <button class="btn small" data-d="5">+5s</button>
+            <button class="btn small" data-d="10">+10s</button>
+            <span id="markTime" class="cfg-hint"></span>
+          </div>
+        </div>
+        <div class="mark-pitch">
+          <canvas id="markPitch" width="600" height="469"></canvas>
+          <p class="cfg-hint" id="markHint">Click the pitch: first where the shot was taken, then where it ended.</p>
+          <div class="mark-view">
+            <button class="btn small flag" id="markGrid">Yard grid</button>
+            <span class="mark-modelwrap">xG model:
+              <button class="btn small flag" id="markModelLog" data-m="logistic">Logistic</button>
+              <button class="btn small flag" id="markModelNN" data-m="nn">Neural net</button>
+            </span>
+          </div>
+          <div class="mark-results">
+            <button class="btn small res" data-r="goal">Goal</button>
+            <button class="btn small res" data-r="saved">Saved</button>
+            <button class="btn small res" data-r="blocked">Blocked</button>
+            <button class="btn small res" data-r="post">Post</button>
+            <button class="btn small res" data-r="miss">Miss</button>
+          </div>
+          <div class="mark-flags">
+            <button class="btn small flag" id="markHeader">Header</button>
+            <button class="btn small flag" id="markPenalty">Penalty</button>
+            <button class="btn small flag" id="markPressure">Under pressure</button>
+            <button class="btn small flag" id="markFreeKick">Free kick</button>
+          </div>
+          <div class="mark-flags">
+            <label class="mark-deflbl">Def. in cone
+              <select id="markNDef" class="mark-sel">
+                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option>
+              </select></label>
+            <button class="btn small flag" id="markGkOff">GK off line</button>
+            <span id="markGkInfo" class="cfg-hint"></span>
+            <span id="markXg" class="mark-xg"></span>
+          </div>
+          <div class="mark-actions">
+            <button class="btn small" id="markReset">Reset points</button>
+            <button class="btn small" id="markClear">Clear shot</button>
+            <button class="btn" id="markSave" style="margin-left:auto">Save &amp; next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tacticsView" style="display:none">
+    <div class="charts-top">
+      <p class="label" style="margin:0">Tactical board <span class="cfg-hint">place tokens, draw runs & zones — saved with this match</span></p>
+      <button class="btn export" id="tExport" style="margin-left:auto">⬇ Export (PNG)</button>
+    </div>
+    <div class="tboard-wrap">
+      <div class="tbar" id="tbar">
+        <div class="tgroup">
+          <button class="tbtn on" data-tool="select" title="select / move">✥ Select</button>
+          <button class="tbtn" data-tool="erase" title="delete an item">⌫ Erase</button>
+        </div>
+        <div class="tgroup" id="tTokenBtns">
+          <button class="tbtn" data-tool="player-a" id="tPlayerA">＋ A</button>
+          <button class="tbtn" data-tool="player-b" id="tPlayerB">＋ B</button>
+          <button class="tbtn" data-tool="player-n">＋ neutral</button>
+          <button class="tbtn" data-tool="ball">＋ ball</button>
+        </div>
+        <div class="tgroup">
+          <button class="tbtn" data-tool="arrow" title="run / pass">↗ Arrow</button>
+          <button class="tbtn" data-tool="line" title="straight line">／ Line</button>
+          <button class="tbtn" data-tool="zone" title="rectangle / zone">▭ Zone</button>
+          <button class="tbtn" data-tool="text" title="text label">T Text</button>
+          <button class="tbtn" data-tool="free" title="freehand">✎ Draw</button>
+        </div>
+        <div class="tgroup">
+          <span class="tswatches" id="tSwatches"></span>
+          <button class="tbtn" id="tDash" title="dashed lines">- - Dashed</button>
+        </div>
+        <div class="tgroup">
+          <button class="tbtn" id="tUndoBtn" title="undo">↶ Undo</button>
+          <button class="tbtn" id="tClear" title="clear the board">Clear</button>
+        </div>
+      </div>
+      <div class="tsvg-holder">
+        <svg id="tSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <p class="cfg-hint" id="tHint"></p>
+    </div>
+  </div>
+
+<script src="/static/chart.umd.min.js"></script>
 <script>
 const video = document.getElementById('video');
 const clock = document.getElementById('clock');
@@ -203,7 +548,8 @@ const stoppage = ms => { const s=Math.floor(ms/1000); return '+'+Math.floor(s/60
 const PLABEL = {first_half:'First half', second_half:'Second half', et_first:'Extra time 1', et_second:'Extra time 2'};
 const PBREAK = {first_half:['HT','Half time'], second_half:['Break','Before extra time'], et_first:['ET break','Extra-time break']};
 
-function matchClock(v, periods){
+function matchClock(v, periods, breaks){
+  const bks = (breaks||[]).filter(b => b.video_start_ms!=null && b.video_end_ms!=null && b.video_end_ms>b.video_start_ms);
   const active = (periods||[]).filter(p=>p.video_start_ms!=null).slice().sort((a,b)=>a.video_start_ms-b.video_start_ms);
   if(!active.length) return {phase:'unset', display:'—', label:'No kickoff set'};
   if(v < active[0].video_start_ms) return {phase:'pre', display:'—', label:'Pre-match'};
@@ -212,7 +558,11 @@ function matchClock(v, periods){
     const nxt = i+1<active.length ? active[i+1].video_start_ms : null;
     const playEnd = p.video_end_ms!=null ? p.video_end_ms : (nxt!=null?nxt:Infinity);
     if(v>=start && v<=playEnd){
-      const elapsed=v-start, reg=p.regulation_min*60000, base=p.base_min*60000;
+      let paused=0, inBreak=false;
+      for(const b of bks){ const lo=Math.max(b.video_start_ms,start), hi=Math.min(b.video_end_ms,v);
+        if(hi>lo) paused+=hi-lo; if(b.video_start_ms<=v && v<b.video_end_ms) inBreak=true; }
+      const elapsed=v-start-paused, reg=p.regulation_min*60000, base=p.base_min*60000;
+      if(inBreak) return {phase:'break', display:fmt(base+elapsed)+' \u26c5', label:'Weather break'};
       if(elapsed<=reg) return {phase:'play', display:fmt(base+elapsed), label:PLABEL[p.type]};
       return {phase:'stoppage', display:fmt(base+reg)+' '+stoppage(elapsed-reg), label:PLABEL[p.type]};
     }
@@ -221,6 +571,74 @@ function matchClock(v, periods){
     }
   }
   return {phase:'post', display:'—', label:'Full time'};
+}
+
+function applyColors(){
+  const c = project.team_colors || ['#ff9d3d','#3db5ff'];
+  document.documentElement.style.setProperty('--a', c[0]);
+  document.documentElement.style.setProperty('--b', c[1]);
+  document.getElementById('teamA-color').value = c[0];
+  document.getElementById('teamB-color').value = c[1];
+}
+
+function currentHolder(v){
+  let h = null;
+  for(const m of (project.possession||[]).slice().sort((a,b)=>a.timestamp_ms-b.timestamp_ms)){
+    if(m.timestamp_ms <= v) h = m.holder; else break;
+  }
+  return h;
+}
+
+function possessionTotals(frontier){
+  const marks = (project.possession||[]).slice().sort((a,b)=>a.timestamp_ms-b.timestamp_ms);
+  const dedup = [];
+  for(const m of marks){ if(dedup.length && dedup[dedup.length-1].holder===m.holder) continue; dedup.push(m); }
+  const ms = [0,0];
+  for(let i=0;i<dedup.length;i++){
+    const end = i+1<dedup.length ? dedup[i+1].timestamp_ms : frontier;
+    const dur = Math.max(0, end - dedup[i].timestamp_ms);
+    if(dedup[i].holder===0 || dedup[i].holder===1) ms[dedup[i].holder] += dur;
+  }
+  const total = ms[0]+ms[1];
+  return {total, pct0: total?Math.round(ms[0]/total*1000)/10:0, pct1: total?Math.round(ms[1]/total*1000)/10:0};
+}
+
+function renderPossession(){
+  const wrap = document.getElementById('poss');
+  const c = project.team_colors;
+  wrap.innerHTML = `<p class="label" style="margin:0 0 2px">Possession</p>
+    <div class="possrow">
+      <button class="possbtn" data-h="0" style="--c:${c[0]}">${project.teams[0]} <kbd>Q</kbd></button>
+      <button class="possbtn" data-h="1" style="--c:${c[1]}">${project.teams[1]} <kbd>W</kbd></button>
+      <button class="possbtn dead" data-h="none">⏸ Dead ball <kbd>E</kbd></button>
+      <span class="posspct" id="posspct">—</span>
+    </div>`;
+  wrap.querySelectorAll('.possbtn').forEach(b => b.onclick = () => setPossession(b.dataset.h));
+  updatePossessionUI();
+}
+
+function updatePossessionUI(){
+  if(!project) return;
+  const v = nowMs();
+  const h = currentHolder(v);
+  const frame = document.getElementById('frame');
+  frame.style.borderColor = h===0 ? project.team_colors[0] : (h===1 ? project.team_colors[1] : 'transparent');
+  document.querySelectorAll('.possbtn').forEach(b => {
+    const bh = b.dataset.h==='none' ? null : Number(b.dataset.h);
+    b.classList.toggle('on', bh===h);
+  });
+  const lastMs = (project.possession||[]).reduce((m,x)=>Math.max(m,x.timestamp_ms), 0);
+  const tot = possessionTotals(Math.max(v, lastMs));
+  const el = document.getElementById('posspct');
+  if(el) el.textContent = tot.total>0 ? `${project.teams[0]} ${tot.pct0}% · ${tot.pct1}% ${project.teams[1]}` : 'no possession yet';
+}
+
+async function setPossession(h){
+  if(!currentVideo) return;
+  const holder = h==='none' ? null : Number(h);
+  project = await api('/api/possession', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({video:currentVideo, timestamp_ms:nowMs(), holder})});
+  render();
 }
 
 async function api(path, opts){
@@ -249,21 +667,27 @@ async function loadVideo(name){
     updateClock();
   };
   render();
+  if(document.getElementById('chartsView').style.display !== 'none'){ renderChartConfig(); renderBoard(); }
 }
 
 function updateClock(){
-  const mc = matchClock(nowMs(), project && project.periods);
+  const mc = matchClock(nowMs(), project && project.periods, project && project.breaks);
   clock.textContent = mc.display;
   subclock.textContent = 'video ' + fmt(nowMs()) + ' · ' + mc.label;
   clock.style.color = mc.phase==='stoppage' ? '#ef9f27'
                     : (mc.phase==='play' ? 'var(--accent)' : 'var(--muted)');
   if(!dragging) seek.value = video.currentTime || 0;
+  updatePossessionUI();
 }
 
 function render(){
+  applyColors();
   document.getElementById('teamA-name').value = project.teams[0];
   document.getElementById('teamB-name').value = project.teams[1];
+  { const ml = document.getElementById('matchLabel'); if(document.activeElement !== ml) ml.value = project.match_label || ''; }
   renderPeriods();
+  renderPossession();
+  renderJumpStats();
 
   // stat cards
   const grid = document.getElementById('statGrid');
@@ -271,8 +695,8 @@ function render(){
     const a = project.counts[project.teams[0]][stat];
     const b = project.counts[project.teams[1]][stat];
     const S = encodeURIComponent(stat);
-    return `<div class="card">
-      <div class="card-head"><span class="card-title">${stat.replace(/_/g,' ')}</span>
+    return `<div class="card" data-stat="${S}">
+      <div class="card-head"><span class="grip" draggable="true" title="drag to reorder">⠿</span><span class="card-title">${stat.replace(/_/g,' ')}</span>
         <button class="del" data-del="${S}" title="delete (data kept)">×</button></div>
       <div class="card-counts">
         <button class="counter teamA" data-team="${encodeURIComponent(project.teams[0])}" data-stat="${S}"><span class="num">${a}</span><span class="who">${project.teams[0]}</span></button>
@@ -285,14 +709,43 @@ function render(){
   grid.querySelectorAll('.del').forEach(btn =>
     btn.onclick = () => configChange({delete_stat: decodeURIComponent(btn.dataset.del)}));
 
-  // archived stats (restore by tapping)
+  // drag-and-drop reordering of stat cards
+  let dragStat = null;
+  grid.querySelectorAll('.grip').forEach(g =>
+    g.addEventListener('dragstart', e => { dragStat = g.closest('.card').dataset.stat; e.dataTransfer.effectAllowed = 'move'; }));
+  grid.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('dragover', e => { if(dragStat){ e.preventDefault(); card.classList.add('drop-target'); } });
+    card.addEventListener('dragleave', () => card.classList.remove('drop-target'));
+    card.addEventListener('drop', e => {
+      e.preventDefault(); card.classList.remove('drop-target');
+      const target = card.dataset.stat;
+      if(!dragStat || dragStat === target) return;
+      const order = project.stats.map(encodeURIComponent);
+      order.splice(order.indexOf(dragStat), 1);
+      order.splice(order.indexOf(target), 0, dragStat);
+      configChange({reorder_stats: order.map(decodeURIComponent)});
+      dragStat = null;
+    });
+  });
+
+  // recycling bin: restore or permanently delete (with its events)
   const arch = document.getElementById('archived');
-  if((project.archived_stats || []).length === 0){ arch.innerHTML = ''; }
+  const bin = project.archived_stats || [];
+  if(bin.length === 0){ arch.innerHTML = ''; }
   else {
-    arch.innerHTML = '<span class="lab">Archived (tap to restore):</span>' +
-      project.archived_stats.map(s => `<button class="arch-chip" data-restore="${encodeURIComponent(s)}">${s.replace(/_/g,' ')} ↩</button>`).join('');
-    arch.querySelectorAll('.arch-chip').forEach(btn =>
-      btn.onclick = () => configChange({restore_stat: decodeURIComponent(btn.dataset.restore)}));
+    arch.innerHTML = '<span class="lab">Recycling bin:</span>' + bin.map(s => {
+      const e = encodeURIComponent(s);
+      return `<span class="bin-item"><span>${s.replace(/_/g,' ')}</span>
+        <button class="bin-restore" data-s="${e}">restore</button>
+        <button class="bin-del" data-s="${e}">delete</button></span>`;
+    }).join('');
+    arch.querySelectorAll('.bin-restore').forEach(b =>
+      b.onclick = () => configChange({restore_stat: decodeURIComponent(b.dataset.s)}));
+    arch.querySelectorAll('.bin-del').forEach(b => b.onclick = () => {
+      const s = decodeURIComponent(b.dataset.s);
+      if(confirm(`Permanently delete "${s.replace(/_/g,' ')}" and all its logged events? This cannot be undone.`))
+        configChange({purge_stat: s});
+    });
   }
 
   // event log (match time)
@@ -302,10 +755,11 @@ function render(){
   else {
     log.innerHTML = project.events.slice().reverse().map(ev => {
       const color = ev.team === project.teams[0] ? 'var(--a)' : 'var(--b)';
-      return `<div class="row"><span class="ts">${ev.match_display}</span>
+      return `<div class="row"><span class="ts seekts" data-ms="${ev.timestamp_ms}" title="jump to this moment">${ev.match_display}</span>
         <span class="dot" style="background:${color}"></span>${ev.team}
         <span class="stat">${ev.stat.replace(/_/g,' ')}</span></div>`;
     }).join('');
+    log.querySelectorAll('.seekts').forEach(t => t.onclick = () => { video.currentTime = Number(t.dataset.ms) / 1000; });
   }
 }
 
@@ -316,6 +770,13 @@ function anchorBtn(type, which, icon, word, val){
   return `<button class="anchor ${set?'on':''}" data-period="${type}" data-which="${which}">${inner}</button>${clear}`;
 }
 
+function breakBtn(id, which, word, val){
+  const set = val != null;
+  const inner = set ? `${word} <span class="mono">${fmt(val)}</span>` : `set ${word}`;
+  const clear = set ? `<button class="pclear" data-bid="${id}" data-which="${which}" data-act="clrbreak" title="clear">×</button>` : '';
+  return `<button class="anchor ${set?'on':''}" data-bid="${id}" data-which="${which}" data-act="setbreak">${inner}</button>${clear}`;
+}
+
 function renderPeriods(){
   const wrap = document.getElementById('periods');
   const hasET = project.periods.some(p => p.type === 'et_first');
@@ -323,14 +784,29 @@ function renderPeriods(){
     `<div class="prow"><span class="pname">${PLABEL[p.type]}</span>
       ${anchorBtn(p.type,'start','⚑','kick',p.video_start_ms)}
       ${anchorBtn(p.type,'end','⏹','whistle',p.video_end_ms)}</div>`).join('');
+  const breaks = project.breaks || [];
+  const breakRows = breaks.map((b,i) =>
+    `<div class="prow"><span class="pname">⛅ Break ${i+1}</span>
+      ${breakBtn(b.id,'start','start',b.video_start_ms)}
+      ${breakBtn(b.id,'end','end',b.video_end_ms)}
+      <button class="pclear" data-bid="${b.id}" data-act="rmbreak" title="remove break">remove</button></div>`).join('');
+  const breakBtnAdd = `<button class="btn et-toggle" id="addBreakBtn">+ Add weather break</button>`;
   const etBtn = `<button class="btn et-toggle" id="etToggle">${hasET?'Remove extra time':'+ Add extra time'}</button>`;
   const warn = (project.warnings && project.warnings.length)
     ? `<div class="warn">⚠ ${project.warnings.join(' · ')}</div>` : '';
-  wrap.innerHTML = `<p class="label" style="margin:0 0 2px">Periods — mark each kick &amp; whistle</p>${rows}${etBtn}${warn}`;
-  wrap.querySelectorAll('.anchor').forEach(b => b.onclick = () =>
+  wrap.innerHTML = `<p class="label" style="margin:0 0 2px">Periods — mark each kick &amp; whistle</p>${rows}`
+    + `<p class="label" style="margin:8px 0 2px">Weather breaks — clock freezes between start &amp; end</p>${breakRows}${breakBtnAdd}${etBtn}${warn}`;
+  wrap.querySelectorAll('.anchor[data-period]').forEach(b => b.onclick = () =>
     configChange({set_anchor:{period:b.dataset.period, which:b.dataset.which, ms:nowMs()}}));
-  wrap.querySelectorAll('.pclear').forEach(b => b.onclick = () =>
+  wrap.querySelectorAll('.pclear[data-period]').forEach(b => b.onclick = () =>
     configChange({set_anchor:{period:b.dataset.period, which:b.dataset.which, ms:null}}));
+  wrap.querySelectorAll('.anchor[data-act="setbreak"]').forEach(b => b.onclick = () =>
+    configChange({set_break_anchor:{id:b.dataset.bid, which:b.dataset.which, ms:nowMs()}}));
+  wrap.querySelectorAll('.pclear[data-act="clrbreak"]').forEach(b => b.onclick = () =>
+    configChange({set_break_anchor:{id:b.dataset.bid, which:b.dataset.which, ms:null}}));
+  wrap.querySelectorAll('.pclear[data-act="rmbreak"]').forEach(b => b.onclick = () =>
+    configChange({remove_break:b.dataset.bid}));
+  document.getElementById('addBreakBtn').onclick = () => configChange({add_break:true});
   document.getElementById('etToggle').onclick = () =>
     configChange(hasET ? {remove_extra_time:true} : {add_extra_time:true});
 }
@@ -348,6 +824,7 @@ async function configChange(payload){
   project = await api('/api/config', {method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({video:currentVideo, ...payload})});
   render(); updateClock();
+  if(document.getElementById('chartsView').style.display !== 'none'){ renderCombos(); renderChartConfig(); renderBoard(); }
 }
 
 // ---- playback controls ----
@@ -382,6 +859,45 @@ document.getElementById('addStatBtn').onclick = async () => {
   if(!name) return;
   await configChange({add_stat:name}); inp.value = '';
 };
+
+// ---- event templates (reusable stat sets) ----
+let templates = [];
+async function loadTemplates(){
+  try { templates = (await api('/api/templates')).templates || []; }
+  catch(e){ templates = []; }
+  const sel = document.getElementById('templateSel');
+  sel.innerHTML = templates.length
+    ? templates.map((t,i) => `<option value="${i}">${t.name}</option>`).join('')
+    : '<option value="">(no templates saved)</option>';
+}
+document.getElementById('saveTemplate').onclick = async () => {
+  if(!project) return;
+  const name = (prompt('Save current stats as a template named:') || '').trim();
+  if(!name) return;
+  await api('/api/templates', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({action:'save', name, stats: project.stats, combined_stats: project.combined_stats || []})});
+  await loadTemplates();
+  const idx = templates.findIndex(t => t.name === name);
+  if(idx >= 0) document.getElementById('templateSel').value = idx;
+};
+document.getElementById('applyTemplate').onclick = async () => {
+  if(!currentVideo) return alert('Load a video first.');
+  const sel = document.getElementById('templateSel'); const t = templates[sel.value];
+  if(!t) return;
+  if(!confirm(`Apply template "${t.name}"? This sets the stat list for this video to the template's (current stats with logged events are kept in the recycle bin).`)) return;
+  project = await api('/api/templates', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({action:'apply', video:currentVideo, stats:t.stats, combined_stats:t.combined_stats || []})});
+  render();
+};
+document.getElementById('delTemplate').onclick = async () => {
+  const sel = document.getElementById('templateSel'); const t = templates[sel.value];
+  if(!t) return;
+  if(!confirm(`Delete template "${t.name}"?`)) return;
+  await api('/api/templates', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({action:'delete', name:t.name})});
+  await loadTemplates();
+};
+loadTemplates();
 function renameTeams(){
   const teams = [document.getElementById('teamA-name').value.trim() || 'Team A',
                  document.getElementById('teamB-name').value.trim() || 'Team B'];
@@ -389,6 +905,13 @@ function renameTeams(){
 }
 document.getElementById('teamA-name').onchange = renameTeams;
 document.getElementById('teamB-name').onchange = renameTeams;
+document.getElementById('matchLabel').onchange = () => configChange({match_label: document.getElementById('matchLabel').value});
+function applyTeamColors(){
+  configChange({team_colors: [document.getElementById('teamA-color').value,
+                              document.getElementById('teamB-color').value]});
+}
+document.getElementById('teamA-color').onchange = applyTeamColors;
+document.getElementById('teamB-color').onchange = applyTeamColors;
 document.getElementById('exportJson').onclick = () => currentVideo && (location.href = '/api/export/json?video=' + encodeURIComponent(currentVideo));
 document.getElementById('exportCsv').onclick  = () => currentVideo && (location.href = '/api/export/csv?video=' + encodeURIComponent(currentVideo));
 
@@ -406,7 +929,1117 @@ document.addEventListener('keydown', e => {
   if(e.code === 'Space'){ e.preventDefault(); video.paused ? video.play() : video.pause(); }
   if(e.code === 'ArrowLeft')  video.currentTime = Math.max(0, video.currentTime - 5);
   if(e.code === 'ArrowRight') video.currentTime += 5;
+  // possession shortcuts (label view only): q = team A, w = team B, e = dead ball
+  const labelOpen = document.getElementById('labelView').style.display !== 'none';
+  if(labelOpen && currentVideo){
+    if(e.key === 'q'){ setPossession('0'); }
+    else if(e.key === 'w'){ setPossession('1'); }
+    else if(e.key === 'e'){ setPossession('none'); }
+  }
 });
+
+// ===== Charts mode =====
+let chartInstances = [];
+const CHART_GRID = '#e9e9e4', CHART_TICK = '#888780';
+
+function showView(view){   // 'label' | 'charts' | 'shots' | 'tactics'
+  document.getElementById('labelView').style.display  = view === 'label'  ? 'flex'  : 'none';
+  document.getElementById('chartsView').style.display = view === 'charts' ? 'block' : 'none';
+  document.getElementById('shotsView').style.display  = view === 'shots'  ? 'block' : 'none';
+  document.getElementById('tacticsView').style.display = view === 'tactics' ? 'block' : 'none';
+  document.getElementById('modeLabel').classList.toggle('on', view === 'label');
+  document.getElementById('modeCharts').classList.toggle('on', view === 'charts');
+  document.getElementById('modeShots').classList.toggle('on', view === 'shots');
+  document.getElementById('modeTactics').classList.toggle('on', view === 'tactics');
+  if(view === 'charts'){ renderChartConfig(); renderBoard(); renderCombos(); }
+  if(view === 'shots'){ renderShotMap(); }
+  if(view === 'tactics'){ renderTactics(); }
+}
+function setMode(charts){ showView(charts ? 'charts' : 'label'); }   // back-compat
+document.getElementById('modeLabel').onclick  = () => showView('label');
+document.getElementById('modeCharts').onclick = () => { if(!currentVideo){ alert('Load a video first.'); return; } showView('charts'); };
+document.getElementById('modeShots').onclick  = () => { if(!currentVideo){ alert('Load a video first.'); return; } showView('shots'); };
+document.getElementById('modeTactics').onclick = () => { if(!currentVideo){ alert('Load a video first.'); return; } showView('tactics'); };
+
+// ---- shot map (read-only output) ----
+const SHOT_COLORS = { goal:'#1a1a1a', saved:'#3b82f6', blocked:'#f59e0b', post:'#a855f7', miss:'#9ca3af' };
+const SHOT_LABELS = { goal:'Goal', saved:'Saved', blocked:'Blocked', post:'Hit post', miss:'Missed' };
+const shotStat = () => (project && project.shot_stat) || 'shots';
+const shotEvents = () => (project ? project.events : []).filter(e => e.stat === shotStat())
+  .slice().sort((a,b) => a.timestamp_ms - b.timestamp_ms);
+const shotsForTeamJS = ti => { const team = project.teams[ti], marks = project.shot_marks || {};
+  return shotEvents().filter(e => e.team === team).map(e => marks[e.id]).filter(Boolean); };
+
+function pitchGeom(W,H){ const m = 12; return {m, fx:m, fy:m, fw:W-2*m, fh:H-2*m}; }
+function drawPitch(ctx, W, H){
+  ctx.clearRect(0,0,W,H);
+  const {fx,fy,fw,fh} = pitchGeom(W,H), cx = fx+fw/2;
+  ctx.fillStyle = '#eef5ee'; ctx.fillRect(fx,fy,fw,fh);
+  ctx.strokeStyle = '#a9c8a9'; ctx.lineWidth = 1.5; ctx.lineJoin = 'round';
+  ctx.strokeRect(fx,fy,fw,fh);
+  ctx.strokeRect(cx-0.593*fw/2, fy, 0.593*fw, 0.314*fh);   // 18-yard box (40.3m x 16.5m)
+  ctx.strokeRect(cx-0.269*fw/2, fy, 0.269*fw, 0.105*fh);   // 6-yard box (18.3m x 5.5m)
+  ctx.strokeRect(cx-0.108*fw/2, fy-0.022*fh, 0.108*fw, 0.022*fh);   // goal (7.3m), just outside the line
+  const spotY = fy+0.21*fh;                                 // penalty spot 11m
+  ctx.fillStyle = '#a9c8a9'; ctx.beginPath(); ctx.arc(cx, spotY, 2.2, 0, 7); ctx.fill();
+  ctx.beginPath(); ctx.arc(cx, spotY-15, 0.1346*fw, 0.30*Math.PI, 0.70*Math.PI); ctx.stroke();   // penalty D (9.15m), edited so the arc sits in the right place
+  ctx.beginPath(); ctx.moveTo(fx, fy+fh); ctx.lineTo(fx+fw, fy+fh); ctx.stroke();              // halfway line
+  ctx.beginPath(); ctx.arc(cx, fy+fh, 0.1346*fw, Math.PI, 2*Math.PI); ctx.stroke();            // centre circle (9.15m)
+}
+function drawYardGrid(ctx, W, H){
+  // faint ~5-yard reference grid to line shots up against the video's yard lines.
+  // pitch ≈ 68m (74.4yd) wide by ~52.5m (57.4yd) deep on this half.
+  const {fx,fy,fw,fh} = pitchGeom(W,H);
+  const sx = (5/74.4)*fw, sy = (5/57.4)*fh;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(90,138,90,0.28)'; ctx.lineWidth = 0.5;
+  for(let x = fx+sx; x < fx+fw-0.5; x += sx){ ctx.beginPath(); ctx.moveTo(x,fy); ctx.lineTo(x,fy+fh); ctx.stroke(); }
+  for(let y = fy+sy; y < fy+fh-0.5; y += sy){ ctx.beginPath(); ctx.moveTo(fx,y); ctx.lineTo(fx+fw,y); ctx.stroke(); }
+  ctx.restore();
+}
+function drawArrow(ctx, x0,y0,x1,y1, color){
+  ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 2; ctx.globalAlpha = 0.65;
+  ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x1,y1); ctx.stroke();
+  const a = Math.atan2(y1-y0, x1-x0), h = 7;
+  ctx.beginPath(); ctx.moveTo(x1,y1);
+  ctx.lineTo(x1-h*Math.cos(a-0.4), y1-h*Math.sin(a-0.4));
+  ctx.lineTo(x1-h*Math.cos(a+0.4), y1-h*Math.sin(a+0.4));
+  ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+}
+function drawBall(ctx,x,y,r){
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#111'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#111'; ctx.beginPath();
+  for(let i=0;i<5;i++){ const a = -Math.PI/2 + i*2*Math.PI/5, px = x+r*0.45*Math.cos(a), py = y+r*0.45*Math.sin(a); i?ctx.lineTo(px,py):ctx.moveTo(px,py); }
+  ctx.closePath(); ctx.fill();
+}
+function drawShots(ctx, W, H, shots){
+  const {fx,fy,fw,fh} = pitchGeom(W,H), X = v => fx+v*fw, Y = v => fy+v*fh;
+  shots.forEach(s => {
+    const color = SHOT_COLORS[s.result] || '#999';
+    if(s.x1 != null && s.y1 != null) drawArrow(ctx, X(s.x0),Y(s.y0), X(s.x1),Y(s.y1), s.result==='goal'?'#555':color);
+    if(s.result === 'goal') drawBall(ctx, X(s.x0), Y(s.y0), 7);
+    else { ctx.fillStyle = color; ctx.strokeStyle = 'rgba(0,0,0,.35)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(X(s.x0),Y(s.y0),5,0,7); ctx.fill(); ctx.stroke(); }
+  });
+}
+function renderShotMap(){
+  if(!project) return;
+  [['pitchA','pitchTitleA',0], ['pitchB','pitchTitleB',1]].forEach(([cid,tid,ti]) => {
+    const cv = document.getElementById(cid), ctx = cv.getContext('2d');
+    drawPitch(ctx, cv.width, cv.height);
+    drawShots(ctx, cv.width, cv.height, shotsForTeamJS(ti));
+    const t = document.getElementById(tid);
+    const shots = shotsForTeamJS(ti).filter(s => s.xg != null);
+    const sum = shots.reduce((a,s) => a + s.xg, 0);
+    t.textContent = shots.length ? `${project.teams[ti]} — xG ${sum.toFixed(2)}` : project.teams[ti];
+    t.style.color = project.team_colors[ti];
+  });
+  renderShotList();
+  document.getElementById('shotLegend').innerHTML = Object.keys(SHOT_LABELS).map(k =>
+    k === 'goal'
+      ? `<span class="item"><span class="swatch" style="background:#fff; border:1px solid #111"></span>${SHOT_LABELS[k]} (ball)</span>`
+      : `<span class="item"><span class="swatch" style="background:${SHOT_COLORS[k]}"></span>${SHOT_LABELS[k]}</span>`).join('');
+}
+function renderShotList(){
+  const evs = shotEvents(), marks = project.shot_marks || {};
+  document.getElementById('shotProgress').textContent = `${evs.filter(e => marks[e.id]).length} of ${evs.length} placed`;
+  const box = document.getElementById('shotList');
+  box.innerHTML = evs.length ? evs.map((e,i) => {
+    const m = marks[e.id], color = e.team === project.teams[0] ? project.team_colors[0] : project.team_colors[1];
+    const badge = m ? `<span class="badge done" style="background:${SHOT_COLORS[m.result]}">${SHOT_LABELS[m.result]}</span>` : `<span class="badge">unplaced</span>`;
+    const xg = (m && m.xg != null) ? `<span class="mn" style="margin-left:auto">xG ${m.xg.toFixed(2)}</span>` : '';
+    return `<div class="shotrow" data-i="${i}" style="cursor:pointer"><span class="mn">${e.match_display}</span><span style="width:9px;height:9px;border-radius:50%;display:inline-block;background:${color}"></span>${e.team}${badge}${xg}</div>`;
+  }).join('') : '<div class="cfg-hint">No shots logged yet (tap the shots counter while labelling).</div>';
+  box.querySelectorAll('.shotrow').forEach(r => r.onclick = () => enterMark(+r.dataset.i));
+}
+document.getElementById('exportShots').onclick = () => {
+  if(!project) return;
+  const a = document.getElementById('pitchA'), b = document.getElementById('pitchB');
+  const pad = 20, gap = 24, titleH = 30;
+  const out = document.createElement('canvas');
+  out.width = pad*2 + gap + a.width + b.width; out.height = pad*2 + titleH + Math.max(a.height, b.height);
+  const ctx = out.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,out.width,out.height);
+  ctx.fillStyle = '#111'; ctx.font = '600 16px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(project.teams[0], pad + a.width/2, pad+20);
+  ctx.fillText(project.teams[1], pad + gap + a.width + b.width/2, pad+20);
+  ctx.drawImage(a, pad, pad+titleH); ctx.drawImage(b, pad + gap + a.width, pad+titleH);
+  out.toBlob(bl => { const u = document.createElement('a'); u.href = URL.createObjectURL(bl); u.download = 'shot-maps.png'; u.click(); });
+};
+
+// ---- shot marking ----
+let markQueue = [], markIdx = 0, markStart = null, markEnd = null, markResult = null, markNext = 'start', videoHome = null;
+let markHeader = false, markPenalty = false, markGrid = false;
+let markPressure = false, markFreeKick = false, markNDef = 0, markGkOff = false, markGk = null, markGkPick = false;
+let currentJumpStat = null;
+function enterMark(startIdx){
+  markQueue = shotEvents();
+  if(!markQueue.length){ alert('No shots logged yet — tap the shots counter while labelling first.'); return; }
+  if(!videoHome) videoHome = document.getElementById('videoHolder');
+  document.getElementById('markVideoSlot').appendChild(video);
+  document.getElementById('shotOutput').style.display = 'none';
+  document.getElementById('markPanel').style.display = 'block';
+  let i = startIdx;
+  if(i == null){ i = markQueue.findIndex(e => !(project.shot_marks||{})[e.id]); if(i < 0) i = 0; }
+  markIdx = i; loadMarkShot();
+}
+function exitMark(){
+  videoHome.appendChild(video);
+  document.getElementById('markPanel').style.display = 'none';
+  document.getElementById('shotOutput').style.display = 'block';
+  renderShotMap();
+}
+function loadMarkShot(){
+  const ev = markQueue[markIdx]; if(!ev) return;
+  document.getElementById('markInfo').textContent = `Shot ${markIdx+1} of ${markQueue.length} · ${ev.team} · ${ev.match_display}`;
+  if(isFinite(ev.timestamp_ms)) video.currentTime = ev.timestamp_ms / 1000;
+  const m = (project.shot_marks||{})[ev.id];
+  markStart = m ? {x:m.x0, y:m.y0} : null;
+  markEnd = (m && m.x1 != null) ? {x:m.x1, y:m.y1} : null;
+  markResult = m ? m.result : null;
+  markHeader = !!(m && m.header); markPenalty = !!(m && m.penalty);
+  markPressure = !!(m && m.under_pressure); markFreeKick = !!(m && m.free_kick);
+  markNDef = (m && m.n_def) || 0;
+  markGkOff = !!(m && m.gk_off); markGk = (m && m.gk_x0 != null) ? {x:m.gk_x0, y:m.gk_y0} : null; markGkPick = false;
+  markNext = markStart ? (markEnd ? 'start' : 'end') : 'start';
+  syncResultButtons(); syncFlagButtons(); syncModelButtons(); drawMarkPitch(); updateMarkXg();
+}
+function syncModelButtons(){
+  const m = (project && project.xg_model) || 'logistic';
+  const nnOk = !!(project && project.xg_nn_available);
+  const logB = document.getElementById('markModelLog'), nnB = document.getElementById('markModelNN');
+  if(!logB) return;
+  logB.classList.toggle('on', m === 'logistic');
+  nnB.classList.toggle('on', m === 'nn');
+  nnB.disabled = !nnOk;
+  nnB.title = nnOk ? 'score shots with the neural-net model' : 'add xg_model/model.pt to enable';
+}
+async function setXgModel(m){
+  if((project && project.xg_model) === m) return;
+  await configChange({set_xg_model: m});   // server recomputes every mark
+  syncModelButtons(); updateMarkXg();
+}
+function syncResultButtons(){
+  document.querySelectorAll('#markPanel .res').forEach(b => {
+    const on = b.dataset.r === markResult;
+    b.classList.toggle('on', on);
+    b.style.background = on ? SHOT_COLORS[b.dataset.r] : '';
+  });
+}
+function syncFlagButtons(){
+  document.getElementById('markHeader').classList.toggle('on', markHeader);
+  document.getElementById('markPenalty').classList.toggle('on', markPenalty);
+  document.getElementById('markPressure').classList.toggle('on', markPressure);
+  document.getElementById('markFreeKick').classList.toggle('on', markFreeKick);
+  document.getElementById('markGkOff').classList.toggle('on', markGkOff);
+  document.getElementById('markNDef').value = String(markNDef);
+  const gi = document.getElementById('markGkInfo');
+  gi.textContent = !markGkOff ? '' : (markGkPick ? 'click keeper position' : (markGk ? 'GK set' : 'using default'));
+}
+async function updateMarkXg(){
+  const el = document.getElementById('markXg');
+  if(!markStart){ el.textContent = ''; return; }
+  try {
+    let q = `x0=${markStart.x}&y0=${markStart.y}&header=${markHeader?1:0}&penalty=${markPenalty?1:0}`
+          + `&under_pressure=${markPressure?1:0}&free_kick=${markFreeKick?1:0}&n_def=${markNDef}`
+          + `&model=${(project && project.xg_model) || 'logistic'}`;
+    if(markGkOff && markGk) q += `&gk_off=1&gk_x0=${markGk.x}&gk_y0=${markGk.y}`;
+    const r = await fetch('/api/xg?' + q); const d = await r.json();
+    el.innerHTML = d.xg == null ? '' : `xG <b>${d.xg.toFixed(2)}</b>`;
+  } catch { el.textContent = ''; }
+}
+function drawMarkPitch(){
+  const cv = document.getElementById('markPitch'), ctx = cv.getContext('2d');
+  drawPitch(ctx, cv.width, cv.height);
+  if(markGrid) drawYardGrid(ctx, cv.width, cv.height);
+  if(markStart) drawShots(ctx, cv.width, cv.height, [{
+    x0:markStart.x, y0:markStart.y,
+    x1:markEnd?markEnd.x:null, y1:markEnd?markEnd.y:null,
+    result: markResult || 'miss'
+  }]);
+  if(markGkOff && markGk){
+    const {fx,fy,fw,fh} = pitchGeom(cv.width, cv.height);
+    const gx = fx + markGk.x*fw, gy = fy + markGk.y*fh;
+    ctx.save();
+    ctx.fillStyle = '#eab308'; ctx.strokeStyle = '#000'; ctx.lineWidth = 1;
+    ctx.fillRect(gx-6, gy-6, 12, 12); ctx.strokeRect(gx-6, gy-6, 12, 12);
+    ctx.fillStyle = '#000'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('GK', gx, gy);
+    ctx.restore();
+  }
+}
+document.getElementById('markPitch').addEventListener('click', e => {
+  const cv = e.currentTarget, rect = cv.getBoundingClientRect();
+  const {fx,fy,fw,fh} = pitchGeom(cv.width, cv.height);
+  const px = (e.clientX-rect.left)/rect.width*cv.width, py = (e.clientY-rect.top)/rect.height*cv.height;
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const pt = {x: clamp((px-fx)/fw), y: clamp((py-fy)/fh)};
+  if(markGkPick){ markGk = pt; markGkPick = false; syncFlagButtons(); drawMarkPitch(); updateMarkXg(); return; }
+  if(markNext === 'start'){ markStart = pt; markEnd = null; markNext = 'end'; }
+  else { markEnd = pt; markNext = 'start'; }
+  drawMarkPitch(); updateMarkXg();
+});
+document.querySelectorAll('#markPanel .res').forEach(b => b.onclick = () => { markResult = b.dataset.r; syncResultButtons(); drawMarkPitch(); });
+document.getElementById('markHeader').onclick = () => { markHeader = !markHeader; syncFlagButtons(); updateMarkXg(); };
+document.getElementById('markPenalty').onclick = () => { markPenalty = !markPenalty; syncFlagButtons(); updateMarkXg(); };
+document.getElementById('markPressure').onclick = () => { markPressure = !markPressure; syncFlagButtons(); updateMarkXg(); };
+document.getElementById('markFreeKick').onclick = () => { markFreeKick = !markFreeKick; syncFlagButtons(); updateMarkXg(); };
+document.getElementById('markNDef').onchange = e => { markNDef = Number(e.target.value); updateMarkXg(); };
+document.getElementById('markGkOff').onclick = () => {
+  markGkOff = !markGkOff;
+  markGkPick = markGkOff;            // turning on → next pitch click sets the keeper
+  syncFlagButtons(); drawMarkPitch(); updateMarkXg();
+};
+document.getElementById('markGrid').onclick = () => { markGrid = !markGrid; document.getElementById('markGrid').classList.toggle('on', markGrid); drawMarkPitch(); };
+document.getElementById('markModelLog').onclick = () => setXgModel('logistic');
+document.getElementById('markModelNN').onclick = () => { if(!document.getElementById('markModelNN').disabled) setXgModel('nn'); };
+document.querySelectorAll('#markPanel [data-d]').forEach(b => b.onclick = () => { video.currentTime = Math.max(0, video.currentTime + Number(b.dataset.d)); });
+document.getElementById('markPlay').onclick = () => video.paused ? video.play() : video.pause();
+video.addEventListener('timeupdate', () => {
+  if(document.getElementById('markPanel').style.display !== 'none'){
+    const t = video.currentTime || 0;
+    document.getElementById('markTime').textContent = `${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;
+  }
+});
+document.getElementById('markPrev').onclick = () => { if(markIdx > 0){ markIdx--; loadMarkShot(); } };
+document.getElementById('markNext').onclick = () => { if(markIdx < markQueue.length-1){ markIdx++; loadMarkShot(); } };
+document.getElementById('markReset').onclick = () => { markStart = markEnd = null; markNext = 'start'; drawMarkPitch(); updateMarkXg(); };
+document.getElementById('markClear').onclick = async () => { await configChange({clear_shot_mark: markQueue[markIdx].id}); loadMarkShot(); };
+document.getElementById('markSave').onclick = async () => {
+  const ev = markQueue[markIdx];
+  if(!markStart || !markResult) return alert('Place the shot location and pick a result.');
+  const mark = {x0:markStart.x, y0:markStart.y, x1:markEnd?markEnd.x:null, y1:markEnd?markEnd.y:null,
+                result:markResult, header:markHeader, penalty:markPenalty,
+                under_pressure:markPressure, free_kick:markFreeKick, n_def:markNDef,
+                gk_off:markGkOff, gk_x0: (markGkOff&&markGk)?markGk.x:null, gk_y0:(markGkOff&&markGk)?markGk.y:null};
+  await configChange({set_shot_mark: {event_id: ev.id, mark}});
+  let n = markQueue.findIndex((e,i) => i > markIdx && !(project.shot_marks||{})[e.id]);
+  if(n < 0) n = Math.min(markIdx+1, markQueue.length-1);
+  markIdx = n; loadMarkShot();
+};
+document.getElementById('markDone').onclick = exitMark;
+function renderJumpStats(){
+  const wrap = document.getElementById('jumpStats'); if(!wrap) return;
+  const stats = project ? project.stats : [];
+  wrap.innerHTML = stats.map(s => `<button class="jbtn ${s===currentJumpStat?'on':''}" data-s="${s}">${s.replace(/_/g,' ')}</button>`).join('');
+  wrap.querySelectorAll('.jbtn').forEach(b => b.onclick = () => {
+    currentJumpStat = (currentJumpStat === b.dataset.s) ? null : b.dataset.s;
+    renderJumpStats(); renderJumpList();
+  });
+  renderJumpList();
+}
+function renderJumpList(){
+  const wrap = document.getElementById('jumpList'); if(!wrap) return;
+  if(!currentJumpStat){ wrap.innerHTML = ''; return; }
+  const evs = (project ? project.events : []).filter(e => e.stat === currentJumpStat)
+    .slice().sort((a,b) => a.timestamp_ms - b.timestamp_ms);
+  if(!evs.length){ wrap.innerHTML = '<p class="cfg-hint" style="margin:2px 6px">No events of this type.</p>'; return; }
+  wrap.innerHTML = evs.map(e => {
+    const color = e.team === project.teams[0] ? project.team_colors[0] : project.team_colors[1];
+    return `<div class="jrow" data-ms="${e.timestamp_ms}" data-id="${e.id}"><span class="mn">${e.match_display || fmt(e.timestamp_ms)}</span>`
+         + `<span style="width:8px;height:8px;border-radius:50%;background:${color};display:inline-block"></span>${e.team}`
+         + `<button class="jdel" data-id="${e.id}" title="delete this event">×</button></div>`;
+  }).join('');
+  wrap.querySelectorAll('.jrow').forEach(r => r.onclick = () => { video.currentTime = Number(r.dataset.ms)/1000; video.pause(); });
+  wrap.querySelectorAll('.jdel').forEach(b => b.onclick = async (ev) => {
+    ev.stopPropagation();
+    await configChange({delete_event: b.dataset.id});
+    renderJumpStats();   // refresh the list (and counts elsewhere)
+  });
+}
+document.getElementById('markShots').onclick = () => enterMark();
+
+// ---- cross-match (across matches) ----
+let matchesData = [], cmChart = null;
+function showCrossTab(cross){
+  document.getElementById('singleBody').style.display = cross ? 'none' : '';
+  document.getElementById('crossBody').style.display = cross ? '' : 'none';
+  document.getElementById('tabCross').classList.toggle('on', cross);
+  document.getElementById('tabThis').classList.toggle('on', !cross);
+  if(cross) loadMatches();
+}
+document.getElementById('tabThis').onclick  = () => showCrossTab(false);
+document.getElementById('tabCross').onclick = () => showCrossTab(true);
+
+async function loadMatches(){
+  const data = await api('/api/matches');
+  matchesData = data.matches || [];
+  document.getElementById('trackedTeam').value = data.tracked_team || '';
+  const box = document.getElementById('matchPick');
+  box.innerHTML = matchesData.length ? matchesData.map((m,i) =>
+    `<div class="pickrow">
+       <input type="checkbox" id="mp${i}" value="${encodeURIComponent(m.video)}"${m.resolves?'':' disabled'}>
+       <label for="mp${i}">${m.label}${m.resolves?'':' <span class="cfg-hint">— team not found</span>'}</label>
+     </div>`).join('') : '<div class="cfg-hint">No saved matches yet.</div>';
+  renderCmConfig();
+}
+function cmUnionStats(){
+  const set = new Set();
+  matchesData.forEach(m => (m.stats||[]).forEach(s => set.add(s)));
+  return [...set];
+}
+function renderCmConfig(){
+  const kind = document.getElementById('cmKind').value, box = document.getElementById('cmConfig');
+  const checks = id => `<div class="statpicks" id="${id}" style="max-height:130px; overflow:auto">` +
+    cmUnionStats().map(s => `<label><input type="checkbox" value="${encodeURIComponent(s)}"> ${s.replace(/_/g,' ')}</label>`).join('') + `</div>`;
+  if(kind === 'count') box.innerHTML = `<div class="cfg-row"><span class="cfg-lab">Stats to total (combine by picking several)</span>${checks('cmStats')}</div>`;
+  else if(kind === 'success') box.innerHTML =
+    `<div class="cfg-row"><span class="cfg-lab">Made / successful</span>${checks('cmMade')}</div>
+     <div class="cfg-row"><span class="cfg-lab">Attempts / total</span>${checks('cmAtt')}</div>`;
+  else box.innerHTML = `<p class="cfg-hint">Possession % for your tracked team in each match.</p>`;
+}
+document.getElementById('cmKind').onchange = renderCmConfig;
+document.getElementById('saveTracked').onclick = async () => {
+  await api('/api/settings', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({tracked_team: document.getElementById('trackedTeam').value})});
+  loadMatches();
+};
+const cmChecked = id => [...document.querySelectorAll('#'+id+' input:checked')].map(c => decodeURIComponent(c.value));
+document.getElementById('cmPlot').onclick = async () => {
+  const videos = [...document.querySelectorAll('#matchPick input:checked')].map(c => decodeURIComponent(c.value));
+  if(!videos.length) return alert('Pick at least one match.');
+  const kind = document.getElementById('cmKind').value;
+  const q = new URLSearchParams({videos: videos.join(','), kind});
+  if(kind === 'count'){ const st = cmChecked('cmStats'); if(!st.length) return alert('Pick at least one stat.'); q.set('stats', st.join(',')); }
+  if(kind === 'success'){ const md = cmChecked('cmMade'), at = cmChecked('cmAtt'); if(!md.length||!at.length) return alert('Pick made and attempts stats.'); q.set('made', md.join(',')); q.set('attempts', at.join(',')); }
+  const res = await api('/api/crossmatch?' + q.toString());
+  const note = document.getElementById('cmNote');
+  note.textContent = res.missing_team && res.missing_team.length
+    ? `Skipped (tracked team "${res.tracked_team}" not found): ${res.missing_team.join(', ')}`
+    : (res.tracked_team ? `Tracked team: ${res.tracked_team}` : 'Set your tracked team above.');
+  drawCrossChart(res, document.getElementById('cmTitle').value.trim() || cmDefaultTitle(kind));
+};
+function cmDefaultTitle(kind){
+  if(kind === 'possession') return 'Possession % by match';
+  if(kind === 'success') return 'Success rate by match';
+  return 'Total by match';
+}
+function drawCrossChart(res, title){
+  const cv = document.getElementById('cmCanvas');
+  if(cmChart) cmChart.destroy();
+  const vals = res.series.map(s => s.value), labels = res.series.map(s => s.label);
+  cmChart = new Chart(cv.getContext('2d'), {
+    type:'bar',
+    data:{ labels, datasets:[{ data:vals, backgroundColor:'#3b82f6', borderRadius:4 }]},
+    options:{ responsive:true, maintainAspectRatio:false, layout:{padding:{top:24}},
+      plugins:{ legend:{display:false}, title:{display:!!title, text:title, color:'#2c2c2a', font:{size:15, weight:'500'}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.raw}${res.ratio?'%':''}`}} },
+      scales:{ x:{grid:{display:false}, ticks:{color:'#555'}},
+               y:{beginAtZero:true, suggestedMax: res.ratio?100:undefined, grid:{color:'#eee'}, ticks:{color:'#555'}} } },
+    plugins:[{ id:'cmvals', afterDatasetsDraw(chart){
+      const ctx = chart.ctx, meta = chart.getDatasetMeta(0);
+      ctx.save(); ctx.fillStyle='#333'; ctx.font='600 12px sans-serif'; ctx.textAlign='center';
+      meta.data.forEach((bar,i) => ctx.fillText(vals[i] + (res.ratio?'%':''), bar.x, bar.y - 6));
+      ctx.restore();
+    }}]
+  });
+}
+document.getElementById('cmExport').onclick = () => {
+  const src = document.getElementById('cmCanvas');
+  if(!cmChart){ return alert('Plot something first.'); }
+  const out = document.createElement('canvas'); out.width = src.width; out.height = src.height;
+  const ctx = out.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,out.width,out.height); ctx.drawImage(src,0,0);
+  out.toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'across-matches.png'; a.click(); });
+};
+
+
+const statChecks  = () => (project ? project.stats : []).map(s =>
+  `<label><input type="checkbox" value="${encodeURIComponent(s)}"> ${s.replace(/_/g,' ')}</label>`).join('');
+const statOpts = () => [
+    ...(project ? project.stats : []).map(s => `<option value="${encodeURIComponent(s)}">${s.replace(/_/g,' ')}</option>`),
+    ...(project && project.combined_stats || []).map(c => `<option value="${encodeURIComponent('combo:'+c.name)}">${c.name.replace(/_/g,' ')} (combined)</option>`)
+  ].join('');
+
+// Resolve a stat token to a per-team value / display name. Tokens may be a real
+// stat, "combo:NAME" (sum of its parts), or "__possession__" (handled by caller).
+const comboParts = name => ((project.combined_stats || []).find(c => c.name === name) || {}).parts || [];
+const goalDefault = () => { const ss = project ? project.stats : []; return ss.includes('goal') ? 'goal' : (ss.includes('goals') ? 'goals' : ''); };
+const goalOpts = () => `<option value="">none</option>` + (project ? project.stats : []).map(s =>
+  `<option value="${encodeURIComponent(s)}"${s===goalDefault()?' selected':''}>${s.replace(/_/g,' ')}</option>`).join('');
+function goalPlugin(goals, colors){
+  return { id:'goalmarks', afterDatasetsDraw(chart){
+    if(!goals || !goals.length) return;
+    const ctx = chart.ctx, area = chart.chartArea, xs = chart.scales.x;
+    // pixel width of one category band (for placing goals within their window)
+    const band = chart.data.labels.length > 1
+      ? Math.abs(xs.getPixelForValue(1) - xs.getPixelForValue(0))
+      : (area.right - area.left);
+    const seen = {};   // count goals already drawn per label, to stagger labels
+    ctx.save();
+    goals.forEach(g => {
+      const idx = chart.data.labels.indexOf(g.label);
+      if(idx < 0) return;
+      const center = xs.getPixelForValue(idx);
+      const frac = (typeof g.frac === 'number') ? g.frac : 0.5;
+      const x = center - band / 2 + frac * band;
+      const n = seen[g.label] = (seen[g.label] || 0) + 1;
+      ctx.strokeStyle = colors[g.team]; ctx.globalAlpha = 0.5; ctx.lineWidth = 1.5; ctx.setLineDash([4,3]);
+      ctx.beginPath(); ctx.moveTo(x, area.top); ctx.lineTo(x, area.bottom); ctx.stroke();
+      ctx.setLineDash([]); ctx.globalAlpha = 1; ctx.fillStyle = colors[g.team];
+      ctx.beginPath(); ctx.arc(x, area.top + 5, 4, 0, Math.PI*2); ctx.fill();
+      ctx.font = '600 10px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+      ctx.fillText(Math.round(g.minute) + "'", x, area.top - 1 - ((n - 1) % 2) * 11);
+    });
+    ctx.restore();
+  }};
+}
+function goalPluginLinear(goals, colors){
+  return { id:'goalmarkslin', afterDatasetsDraw(chart){
+    if(!goals || !goals.length) return;
+    const ctx = chart.ctx, area = chart.chartArea, xs = chart.scales.x;
+    const seen = {}; ctx.save();
+    goals.forEach(g => {
+      const x = xs.getPixelForValue(g.minute);
+      if(x < area.left - 1 || x > area.right + 1) return;
+      const key = Math.round(g.minute), n = seen[key] = (seen[key] || 0) + 1;
+      ctx.strokeStyle = colors[g.team]; ctx.globalAlpha = 0.5; ctx.lineWidth = 1.5; ctx.setLineDash([4,3]);
+      ctx.beginPath(); ctx.moveTo(x, area.top); ctx.lineTo(x, area.bottom); ctx.stroke();
+      ctx.setLineDash([]); ctx.globalAlpha = 1; ctx.fillStyle = colors[g.team];
+      ctx.beginPath(); ctx.arc(x, area.top + 5, 4, 0, Math.PI*2); ctx.fill();
+      ctx.font = '600 10px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+      ctx.fillText(Math.round(g.minute) + "'", x, area.top - 1 - ((n - 1) % 2) * 11);
+    });
+    ctx.restore();
+  }};
+}
+function statValue(token, team){
+  if(token && token.indexOf('combo:') === 0)
+    return comboParts(token.slice(6)).reduce((s,p) => s + (project.counts[team][p] || 0), 0);
+  return project.counts[team][token] || 0;
+}
+function statLabel(token){
+  if(token === '__possession__') return 'possession';
+  if(token === '__xg__') return 'xG';
+  if(token && token.indexOf('combo:') === 0) return token.slice(6).replace(/_/g,' ');
+  return token.replace(/_/g,' ');
+}
+function teamXgJS(){
+  // summed xG of each team's marked shots, client-side from shot_marks
+  const marks = (project && project.shot_marks) || {}, st = shotStat(), tot = [0, 0];
+  (project ? project.events : []).forEach(e => {
+    if(e.stat !== st) return;
+    const m = marks[e.id]; if(!m || m.xg == null) return;
+    const ti = e.team === project.teams[0] ? 0 : (e.team === project.teams[1] ? 1 : -1);
+    if(ti >= 0) tot[ti] += m.xg;
+  });
+  return [Math.round(tot[0]*100)/100, Math.round(tot[1]*100)/100];
+}
+
+function renderCombos(){
+  const list = document.getElementById('comboList'), parts = document.getElementById('comboParts');
+  if(!list || !parts) return;
+  const combos = (project && project.combined_stats) || [];
+  list.innerHTML = combos.map((c,i) =>
+    `<div class="combo-row"><span class="combo-name">${c.name.replace(/_/g,' ')}</span>
+       <span class="combo-parts">${c.parts.map(p=>p.replace(/_/g,' ')).join(' + ')}</span>
+       <button class="combo-del" data-i="${i}" title="remove">×</button></div>`).join('')
+    || '<div class="none" style="font-size:12px; padding:2px 0">None yet.</div>';
+  parts.innerHTML = (project ? project.stats : []).map(s =>
+    `<label><input type="checkbox" value="${encodeURIComponent(s)}"> ${s.replace(/_/g,' ')}</label>`).join('');
+  list.querySelectorAll('.combo-del').forEach(b => b.onclick = () => {
+    const next = combos.slice(); next.splice(+b.dataset.i, 1); configChange({combined_stats: next});
+  });
+}
+document.getElementById('addComboBtn').onclick = () => {
+  const name = document.getElementById('comboName').value.trim();
+  const parts = [...document.querySelectorAll('#comboParts input:checked')].map(c => decodeURIComponent(c.value));
+  if(!name || !parts.length) return alert('Give the combined stat a name and pick at least one stat.');
+  document.getElementById('comboName').value = '';
+  configChange({combined_stats: ((project.combined_stats||[]).concat([{name, parts}]))});
+};
+
+// Ordered, checkable picker: check to include, ↑/↓ to set row order.
+let pickerStats = [];
+function renderStatPicker(box){
+  const checked = new Set([...box.querySelectorAll('input:checked')].map(i => i.value));
+  box.innerHTML = pickerStats.map((s,i) => {
+    const enc = encodeURIComponent(s);
+    const disp = s === '__possession__' ? 'possession'
+      : s === '__xg__' ? 'xG'
+      : (s.indexOf('combo:') === 0 ? s.slice(6).replace(/_/g,' ') + ' (combined)' : s.replace(/_/g,' '));
+    return `<div class="pickrow">
+      <input type="checkbox" id="pk${i}" value="${enc}"${checked.has(enc)?' checked':''}>
+      <label for="pk${i}">${disp}</label>
+      <span class="pmove"><button type="button" class="pmv" data-i="${i}" data-d="-1">↑</button><button type="button" class="pmv" data-i="${i}" data-d="1">↓</button></span>
+    </div>`;
+  }).join('');
+  box.querySelectorAll('.pmv').forEach(b => b.onclick = () => {
+    const i = +b.dataset.i, j = i + (+b.dataset.d);
+    if(j < 0 || j >= pickerStats.length) return;
+    [pickerStats[i], pickerStats[j]] = [pickerStats[j], pickerStats[i]];
+    renderStatPicker(box);
+  });
+}
+
+function renderChartConfig(){
+  const t = document.getElementById('chartType').value;
+  const cfg = document.getElementById('chartConfig');
+  if(t === 'timeline'){
+    cfg.innerHTML = `<div class="cfg-row"><span class="cfg-lab">Metric (one or more stats)</span><div class="statpicks">${statChecks()}</div></div>
+      <div class="cfg-row"><span class="cfg-lab"><input type="checkbox" id="xgToggle"> xG (sum shot xG instead of counts)</span></div>
+      <div class="cfg-row"><span class="cfg-lab">Window (minutes)</span><select id="binSel"><option>5</option><option selected>10</option><option>15</option></select></div>
+      <div class="cfg-row"><span class="cfg-lab">Goal markers</span><select id="goalSel">${goalOpts()}</select></div>`;
+  } else if(t === 'cumulative'){
+    cfg.innerHTML = `<div class="cfg-row"><span class="cfg-lab">Stats</span><div class="statpicks">${statChecks()}</div></div>
+      <div class="cfg-row"><span class="cfg-lab"><input type="checkbox" id="xgToggle"> xG (sum shot xG instead of counts)</span></div>
+      <div class="cfg-row"><span class="cfg-lab">Goal markers</span><select id="goalSel">${goalOpts()}</select></div>`;
+  } else if(t === 'comparison' || t === 'headtohead'){
+    cfg.innerHTML = `<div class="cfg-row"><span class="cfg-lab">Stats (check to include, ↑↓ to order)</span><div class="orderpick" id="orderPick"></div></div>`;
+    pickerStats = (project ? project.stats.slice() : []);
+    (project && project.combined_stats || []).forEach(c => pickerStats.push('combo:' + c.name));
+    if(t === 'headtohead'){ pickerStats.push('__possession__'); pickerStats.push('__xg__'); }
+    renderStatPicker(document.getElementById('orderPick'));
+  } else if(t === 'attacksides'){
+    const ss = project ? project.stats : [];
+    const pick = (cands) => { for(const c of cands) if(ss.includes(c)) return c; return ''; };
+    const opts = (sel, blank) => (blank ? `<option value=""${sel?'':' selected'}>— none —</option>` : '')
+      + ss.map(s => `<option value="${encodeURIComponent(s)}"${s===sel?' selected':''}>${s.replace(/_/g,' ')}</option>`).join('');
+    cfg.innerHTML = `<div class="cfg-row"><span class="cfg-lab">Left-side stat</span><select id="leftStat">${opts(pick(['left_crosses','left_attacks','attack left','left']))}</select></div>
+      <div class="cfg-row"><span class="cfg-lab">Center stat (optional)</span><select id="centerStat">${opts(pick(['center_attacks','attack center','through_balls','center']), true)}</select></div>
+      <div class="cfg-row"><span class="cfg-lab">Right-side stat</span><select id="rightStat">${opts(pick(['right_crosses','right_attacks','attack right','right']))}</select></div>
+      <div class="cfg-row"><span class="cfg-lab">Teams</span><select id="teamPick">
+        <option value="both" selected>both</option><option value="0">${project?project.teams[0]:'A'} only</option><option value="1">${project?project.teams[1]:'B'} only</option></select></div>`;
+  } else if(t === 'possession'){
+    cfg.innerHTML = `<div class="cfg-row"><span class="cfg-lab">Window</span><select id="possWin">
+        <option value="5">5 min</option><option value="10" selected>10 min</option><option value="15">15 min</option><option value="half">per half</option></select></div>
+      <div class="cfg-row"><span class="cfg-lab">Goal markers</span><select id="goalSel">${goalOpts()}</select></div>`;
+  } else {
+    cfg.innerHTML = `<div class="cfg-row"><span class="cfg-lab">Mode</span>
+        <select id="dmode"><option value="possession">Possession</option><option value="share">Stat share (A vs B)</option><option value="success">Success rate</option></select></div><div id="dfields"></div>`;
+    const dmode = cfg.querySelector('#dmode');
+    const renderD = () => {
+      const df = cfg.querySelector('#dfields');
+      if(dmode.value === 'share') df.innerHTML = `<div class="cfg-row"><span class="cfg-lab">Stat</span><select id="dstat">${statOpts()}</select></div>`;
+      else if(dmode.value === 'success') df.innerHTML =
+        `<div class="cfg-row"><span class="cfg-lab">Team</span><select id="dteam"><option value="0">${project.teams[0]}</option><option value="1">${project.teams[1]}</option></select></div>
+         <div class="cfg-row"><span class="cfg-lab">Made / successful (one or more)</span><div class="statpicks" id="dmade">${statChecks()}</div></div>
+         <div class="cfg-row"><span class="cfg-lab">Attempts / total (one or more)</span><div class="statpicks" id="datt">${statChecks()}</div></div>`;
+      else df.innerHTML = '';
+    };
+    dmode.onchange = renderD; renderD();
+  }
+  if(t !== 'timeline' && t !== 'attacksides'){
+    cfg.insertAdjacentHTML('beforeend',
+      `<div class="cfg-row"><span class="cfg-lab">Legend size</span><select id="legendSize">
+         <option value="10">small</option><option value="12" selected>medium</option><option value="15">large</option></select></div>`);
+  }
+  if(t === 'headtohead'){
+    cfg.insertAdjacentHTML('beforeend',
+      `<div class="cfg-row"><span class="cfg-lab">Stat label size</span><select id="labelSize">
+         <option value="auto" selected>auto (fit to plot)</option><option value="11">small</option><option value="14">medium</option><option value="18">large</option></select></div>`);
+  }
+  if(t === 'comparison'){
+    cfg.insertAdjacentHTML('beforeend',
+      `<div class="cfg-row"><span class="cfg-lab">Axis label size</span><select id="axisSize">
+         <option value="12">small</option><option value="16" selected>medium</option><option value="20">large</option></select></div>`);
+  }
+}
+document.getElementById('chartType').onchange = renderChartConfig;
+
+document.getElementById('addChartBtn').onclick = () => {
+  const t = document.getElementById('chartType').value;
+  const title = document.getElementById('chartTitle').value.trim();
+  const picks = [...document.querySelectorAll('#chartConfig .statpicks input:checked, #chartConfig .orderpick input:checked')].map(c => decodeURIComponent(c.value));
+  const cfg = { id:'c'+Date.now(), type:t, size:'half', title };
+  if(t === 'timeline'){
+    const xg = document.getElementById('xgToggle').checked;
+    if(!picks.length && !xg) return alert('Pick at least one stat (or tick xG).');
+    cfg.stats = picks; cfg.bin = Number(document.getElementById('binSel').value); cfg.xg = xg;
+    cfg.goalStat = decodeURIComponent(document.getElementById('goalSel').value || '');
+    cfg.title = title || (xg ? 'Net xG timeline' : 'Net ' + picks.join(' + ').replace(/_/g,' ') + ' timeline'); cfg.size = 'full';
+  } else if(t === 'cumulative'){
+    const xg = document.getElementById('xgToggle').checked;
+    if(!picks.length && !xg) return alert('Pick at least one stat (or tick xG).');
+    cfg.stats = picks; cfg.xg = xg;
+    cfg.goalStat = decodeURIComponent(document.getElementById('goalSel').value || '');
+    cfg.title = title || (xg ? 'Cumulative xG' : 'Cumulative ' + picks.join(' + ').replace(/_/g,' ')); cfg.size = 'full';
+  } else if(t === 'comparison'){
+    if(!picks.length) return alert('Pick at least one stat.');
+    cfg.stats = picks; cfg.title = title || 'Team comparison';
+    cfg.axisSize = Number(document.getElementById('axisSize').value);
+  } else if(t === 'headtohead'){
+    if(!picks.length) return alert('Pick at least one stat.');
+    cfg.stats = picks; cfg.title = title || 'Match stats'; cfg.size = 'full';
+    const lv = document.getElementById('labelSize').value; cfg.labelSize = lv === 'auto' ? 'auto' : Number(lv);
+  } else if(t === 'attacksides'){
+    cfg.left = decodeURIComponent(document.getElementById('leftStat').value || '');
+    cfg.right = decodeURIComponent(document.getElementById('rightStat').value || '');
+    cfg.center = decodeURIComponent(document.getElementById('centerStat').value || '');
+    cfg.teamPick = document.getElementById('teamPick').value;
+    if(!cfg.left || !cfg.right) return alert('Pick a left and right stat.');
+    cfg.title = title || 'Attack sides'; cfg.size = 'full';
+  } else if(t === 'possession'){
+    cfg.window = document.getElementById('possWin').value;
+    cfg.goalStat = decodeURIComponent(document.getElementById('goalSel').value || '');
+    cfg.title = title || ('Possession by ' + (cfg.window === 'half' ? 'half' : cfg.window + ' min')); cfg.size = 'full';
+  } else {
+    const m = document.getElementById('dmode').value; cfg.mode = m;
+    if(m === 'share'){ cfg.stat = decodeURIComponent(document.getElementById('dstat').value); cfg.title = title || (cfg.stat.replace(/_/g,' ') + ' share'); }
+    else if(m === 'success'){
+      cfg.team = Number(document.getElementById('dteam').value);
+      cfg.made = [...document.querySelectorAll('#dmade input:checked')].map(c => decodeURIComponent(c.value));
+      cfg.attempts = [...document.querySelectorAll('#datt input:checked')].map(c => decodeURIComponent(c.value));
+      if(!cfg.made.length || !cfg.attempts.length) return alert('Pick at least one "made" and one "attempts" stat.');
+      cfg.title = title || (project.teams[cfg.team] + ' success rate');
+    }
+    else cfg.title = title || 'Possession';
+  }
+  if(t !== 'timeline'){ const ls = document.getElementById('legendSize'); cfg.legendSize = ls ? Number(ls.value) : 12; }
+  project.charts = (project.charts || []).concat([cfg]);
+  document.getElementById('chartTitle').value = '';
+  saveBoard();
+};
+
+document.getElementById('scoreInput').onchange = saveBoard;
+document.getElementById('exportBoard').onclick = () => {
+  const items = [...document.querySelectorAll('#board .chart-card')].map(card =>
+    ({ cv: card.querySelector('canvas'), size: card.classList.contains('tall') ? 'tall' : (card.classList.contains('full') ? 'full' : 'half') }));
+  if(!items.length) return alert('No charts to export.');
+  exportGroup(items, (currentVideo || 'charts').replace(/\.mp4$/i,'') + '_board');
+};
+
+async function saveBoard(){
+  if(!currentVideo) return;
+  project = await api('/api/config', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({video:currentVideo, charts:project.charts, chart_score:document.getElementById('scoreInput').value})});
+  renderBoard();
+}
+
+function boardAction(act, i){
+  const ch = project.charts;
+  if(act === 'rm') ch.splice(i,1);
+  else if(act === 'size'){ const order=['half','full','tall']; ch[i].size = order[(order.indexOf(ch[i].size)+1+order.length)%order.length] || 'half'; }
+  else if(act === 'up' && i > 0) [ch[i-1], ch[i]] = [ch[i], ch[i-1]];
+  else if(act === 'down' && i < ch.length-1) [ch[i+1], ch[i]] = [ch[i], ch[i+1]];
+  else if(act === 'png'){ const card = document.querySelector(`#board .chart-card[data-i="${i}"]`);
+    exportGroup([{cv:card.querySelector('canvas'), size:'full'}], ch[i].title || 'chart'); return; }
+  else return;
+  saveBoard();
+}
+
+async function renderBoard(){
+  const board = document.getElementById('board');
+  chartInstances.forEach(c => c.destroy()); chartInstances = [];
+  const charts = project.charts || [];
+  document.getElementById('scoreInput').value = project.chart_score || '';
+  board.innerHTML = charts.map((c,i) => `
+    <div class="chart-card ${c.size||'half'}" data-i="${i}">
+      <div class="chart-head">
+        <input class="chart-title" data-i="${i}" value="${(c.title||'').replace(/"/g,'&quot;')}">
+        <button class="cact" data-act="up" data-i="${i}" title="move up">↑</button>
+        <button class="cact" data-act="down" data-i="${i}" title="move down">↓</button>
+        <button class="cact" data-act="size" data-i="${i}" title="resize: half → wide → tall">${({half:'½',full:'W',tall:'T'})[c.size||'half']}</button>
+        <button class="cact" data-act="png" data-i="${i}" title="export PNG">⬇</button>
+        <button class="cact" data-act="rm" data-i="${i}" title="remove">✕</button>
+      </div>
+      <div class="chart-canvas-wrap"><canvas id="cv${i}"></canvas></div>
+    </div>`).join('');
+  board.querySelectorAll('.chart-title').forEach(inp => inp.onchange = () => { project.charts[Number(inp.dataset.i)].title = inp.value; saveBoard(); });
+  board.querySelectorAll('.cact').forEach(b => b.onclick = () => boardAction(b.dataset.act, Number(b.dataset.i)));
+  for(let i = 0; i < charts.length; i++) await buildChart(charts[i], document.getElementById('cv'+i));
+}
+
+function measureTextMax(strings, fontPx, weight){
+  const cv = measureTextMax._cv || (measureTextMax._cv = document.createElement('canvas'));
+  const ctx = cv.getContext('2d'); ctx.font = (weight||'600') + ' ' + fontPx + 'px sans-serif';
+  return strings.reduce((mx, s) => Math.max(mx, ctx.measureText('' + s).width), 0);
+}
+
+function drawAttackSides(cfg, canvas, ca, cb, teams){
+  // comparison-style, but team arrows per channel (left / center / right) on a pitch.
+  canvas.width = 600; canvas.height = 469; canvas.style.width = '100%'; canvas.style.height = 'auto';
+  const ctx = canvas.getContext('2d'), W = canvas.width, H = canvas.height;
+  drawPitch(ctx, W, H);
+  const {fx,fy,fw,fh} = pitchGeom(W,H);
+  const cols = [];
+  if(cfg.left) cols.push(cfg.left);
+  if(cfg.center) cols.push(cfg.center);
+  if(cfg.right) cols.push(cfg.right);
+  const n = cols.length;
+  const xfrac = n >= 3 ? [0.18, 0.5, 0.82] : n === 2 ? [0.27, 0.73] : [0.5];
+  const teamSel = cfg.teamPick === '0' ? [0] : cfg.teamPick === '1' ? [1] : [0, 1];
+  const colColors = [ca, cb];
+  let mx = 1;
+  cols.forEach(stat => teamSel.forEach(ti => { mx = Math.max(mx, statValue(stat, teams[ti])); }));
+  const baseY = fy + 0.9*fh, maxLen = 0.52*fh, lw = teamSel.length === 1 ? 15 : 11, headLen = 15, hw = teamSel.length === 1 ? 12 : 9;
+  function arrow(xp, count, color){
+    ctx.save();
+    const len = (count/mx)*maxLen, tipY = baseY - len;
+    if(len > 2){
+      ctx.strokeStyle = color; ctx.fillStyle = color; ctx.globalAlpha = 0.9; ctx.lineWidth = lw; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(xp, baseY); ctx.lineTo(xp, tipY + headLen); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(xp, tipY); ctx.lineTo(xp - hw, tipY + headLen); ctx.lineTo(xp + hw, tipY + headLen); ctx.closePath(); ctx.fill();
+    }
+    ctx.globalAlpha = 1; ctx.fillStyle = color; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    ctx.fillText(count, xp, (len > 2 ? tipY : baseY) - 6);
+    ctx.restore();
+  }
+  const off = 0.07*fw;
+  cols.forEach((stat, ci) => {
+    const cxp = fx + xfrac[ci]*fw;
+    teamSel.forEach((ti, k) => {
+      const xp = teamSel.length === 2 ? (k === 0 ? cxp - off : cxp + off) : cxp;
+      arrow(xp, statValue(stat, teams[ti]), colColors[ti]);
+    });
+    ctx.fillStyle = '#555'; ctx.font = '600 13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(statLabel(stat), cxp, baseY + 12);
+  });
+  if(cfg.title){ ctx.fillStyle = '#2c2c2a'; ctx.font = '600 14px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'top'; ctx.fillText(cfg.title, fx + 8, fy + 6); }
+  let lx = fx + 8; const ly = fy + 28; ctx.textBaseline = 'middle'; ctx.font = '600 12px sans-serif';
+  teamSel.forEach(ti => {
+    ctx.fillStyle = colColors[ti]; ctx.fillRect(lx, ly - 6, 12, 12);
+    ctx.fillStyle = '#444'; ctx.textAlign = 'left'; ctx.fillText(teams[ti], lx + 16, ly);
+    lx += 16 + ctx.measureText(teams[ti]).width + 14;
+  });
+}
+async function buildChart(cfg, canvas){
+  if(!canvas) return;
+  const ca = project.team_colors[0], cb = project.team_colors[1], teams = project.teams;
+  if(cfg.type === 'attacksides'){ drawAttackSides(cfg, canvas, ca, cb, teams); return; }
+  const titlePlugin = { display: !!cfg.title, text: cfg.title, color:'#2c2c2a', font:{size:14, weight:'500'} };
+  const ls = cfg.legendSize || 12;
+  const legendLabels = { color:'#555', font:{size:ls}, boxWidth:Math.round(ls*1.3), boxHeight:Math.round(ls*0.85), padding:Math.round(ls*0.8) };
+  let conf;
+  if(cfg.type === 'timeline'){
+    const s = await api(`/api/chartdata?video=${encodeURIComponent(currentVideo)}&kind=timeline&stats=${cfg.stats.map(encodeURIComponent).join(',')}&bin=${cfg.bin}&goals=${encodeURIComponent(cfg.goalStat||'')}${cfg.xg?'&xg=1':''}`);
+    const yfmt = v => { const n = cfg.xg ? Number(v).toFixed(2) : v; return n > 0 ? '+' + n : '' + n; };
+    conf = { type:'bar', data:{ labels:s.labels, datasets:[{ data:s.net, borderWidth:0, borderRadius:3,
+        backgroundColor: s.net.map(v => v>0?cb : v<0?ca : '#d0d0cc') }]},
+      plugins:[ goalPlugin(s.goals, [ca, cb]) ],
+      options:{ responsive:true, maintainAspectRatio:false,
+        plugins:{ title:titlePlugin, legend:{display:false},
+          tooltip:{callbacks:{label:ctx=>{const v=ctx.raw; return v>0?`${teams[1]} +${v}`:v<0?`${teams[0]} +${-v}`:'even';}}} },
+        scales:{ x:{grid:{color:CHART_GRID}, ticks:{color:CHART_TICK}, title:{display:true,text:'match minute',color:CHART_TICK}},
+                 y:{grid:{color:CHART_GRID}, ticks:{color:CHART_TICK, stepSize:cfg.xg?undefined:1, callback:yfmt},
+                    title:{display:true, text:cfg.xg?`net xG (${teams[1]} − ${teams[0]})`:`net (${teams[1]} − ${teams[0]})`, color:CHART_TICK}} } } };
+  } else if(cfg.type === 'cumulative'){
+    const s = await api(`/api/chartdata?video=${encodeURIComponent(currentVideo)}&kind=cumulative&stats=${cfg.stats.map(encodeURIComponent).join(',')}&goals=${encodeURIComponent(cfg.goalStat||'')}${cfg.xg?'&xg=1':''}`);
+    conf = { type:'line', data:{ datasets:[
+        {label:teams[0], data:s.a.map(p=>({x:p[0],y:p[1]})), borderColor:ca, backgroundColor:ca, stepped:true, pointRadius:0},
+        {label:teams[1], data:s.b.map(p=>({x:p[0],y:p[1]})), borderColor:cb, backgroundColor:cb, stepped:true, pointRadius:0} ]},
+      plugins:[ goalPluginLinear(s.goals, [ca, cb]) ],
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ title:titlePlugin, legend:{labels:legendLabels} },
+        scales:{ x:{type:'linear', grid:{color:CHART_GRID}, ticks:{color:CHART_TICK}, title:{display:true,text:'match minute',color:CHART_TICK}},
+                 y:{beginAtZero:true, grid:{color:CHART_GRID}, ticks:{color:CHART_TICK, stepSize:cfg.xg?undefined:1, callback:v=>cfg.xg?Number(v).toFixed(2):v}} } } };
+  } else if(cfg.type === 'comparison'){
+    const labels = cfg.stats.map(statLabel);
+    conf = { type:'bar', data:{ labels, datasets:[
+        {label:teams[0], data:cfg.stats.map(s=>statValue(s, teams[0])), backgroundColor:ca},
+        {label:teams[1], data:cfg.stats.map(s=>statValue(s, teams[1])), backgroundColor:cb} ]},
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ title:titlePlugin, legend:{labels:legendLabels} },
+        scales:{ x:{grid:{display:false}, ticks:{color:CHART_TICK, font:{size:cfg.axisSize||16}}}, y:{beginAtZero:true, grid:{color:CHART_GRID}, ticks:{color:CHART_TICK, stepSize:1}} } } };
+  } else if(cfg.type === 'headtohead'){
+    const isP = s => s === '__possession__';
+    const isX = s => s === '__xg__';
+    let pp = [0, 0];
+    if(cfg.stats.some(isP)){ const lastMs=(project.possession||[]).reduce((m,x)=>Math.max(m,x.timestamp_ms),0);
+      const t = possessionTotals(Math.max(lastMs, project.position_ms||0)); pp = [t.pct0||0, t.pct1||0]; }
+    const xg = cfg.stats.some(isX) ? teamXgJS() : [0, 0];
+    const aC = cfg.stats.map(s => isP(s) ? pp[0] : isX(s) ? xg[0] : statValue(s, teams[0]));
+    const bC = cfg.stats.map(s => isP(s) ? pp[1] : isX(s) ? xg[1] : statValue(s, teams[1]));
+    const names = cfg.stats.map(statLabel);
+    const aL = cfg.stats.map((s,i) => isP(s) ? aC[i] + '%' : isX(s) ? aC[i].toFixed(2) : '' + aC[i]);
+    const bL = cfg.stats.map((s,i) => isP(s) ? bC[i] + '%' : isX(s) ? bC[i].toFixed(2) : '' + bC[i]);
+    const left  = cfg.stats.map((s,i) => { const mx = Math.max(aC[i], bC[i], 1); return -100 * aC[i] / mx; });
+    const right = cfg.stats.map((s,i) => { const mx = Math.max(aC[i], bC[i], 1); return  100 * bC[i] / mx; });
+    // Resolve the label font size up front, then size the side gutters to the
+    // widest count label so nothing (e.g. "56.2%") clips at the edge.
+    const rows = cfg.stats.length || 1;
+    const plotH = Math.max(90, ((canvas.parentElement && canvas.parentElement.clientHeight) || 240) - 70);
+    const hhFs = (cfg.labelSize == null || cfg.labelSize === 'auto')
+      ? Math.max(10, Math.min(20, Math.round(plotH / rows * 0.42))) : cfg.labelSize;
+    const gutter = Math.max(30, Math.ceil(measureTextMax(aL.concat(bL), hhFs)) + 14);
+    conf = { type:'bar',
+      data:{ labels: names, datasets:[
+        {label:teams[0], data:left,  backgroundColor:ca, borderRadius:3, barThickness:14, stack:'h'},
+        {label:teams[1], data:right, backgroundColor:cb, borderRadius:3, barThickness:14, stack:'h'} ]},
+      options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, layout:{padding:{top:14, left:gutter, right:gutter}},
+        plugins:{ title:titlePlugin, legend:{position:'bottom', labels:legendLabels},
+          tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.datasetIndex===0?aL[ctx.dataIndex]:bL[ctx.dataIndex]}`}} },
+        scales:{ x:{stacked:true, min:-100, max:100, display:false, grid:{display:false}},
+                 y:{stacked:true, ticks:{display:false}, grid:{display:false}, border:{display:false}} } },
+      plugins:[{ id:'h2hlabels', afterDatasetsDraw(chart){
+        const ctx = chart.ctx, area = chart.chartArea;
+        const m0 = chart.getDatasetMeta(0).data, m1 = chart.getDatasetMeta(1).data;
+        const fs = hhFs;
+        ctx.save(); ctx.textBaseline = 'middle';
+        names.forEach((nm,i) => {
+          // counts live in the fixed left/right gutters, so they never clip on full bars
+          ctx.font = '600 ' + fs + 'px sans-serif';
+          ctx.fillStyle = ca; ctx.textAlign = 'right'; ctx.fillText(aL[i], area.left - 8, m0[i].y);
+          ctx.fillStyle = cb; ctx.textAlign = 'left';  ctx.fillText(bL[i], area.right + 8, m1[i].y);
+          ctx.font = '500 ' + fs + 'px sans-serif'; ctx.fillStyle = '#555'; ctx.textAlign = 'center';
+          ctx.fillText(nm, (area.left + area.right) / 2, m0[i].y - (fs + 4));
+        });
+        ctx.restore();
+      }}] };
+  } else if(cfg.type === 'possession'){
+    const s = await api(`/api/chartdata?video=${encodeURIComponent(currentVideo)}&kind=possession&window=${cfg.window || '10'}&goals=${encodeURIComponent(cfg.goalStat||'')}`);
+    const mmss = sec => `${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}`;
+    conf = { type:'bar',
+      plugins:[ goalPlugin(s.goals, [ca, cb]) ],
+      data:{ labels:s.labels, datasets:[
+        {label:teams[0], data:s.pct_a, backgroundColor:ca, stack:'p'},
+        {label:teams[1], data:s.pct_b, backgroundColor:cb, stack:'p'} ]},
+      options:{ responsive:true, maintainAspectRatio:false,
+        plugins:{ title:titlePlugin, legend:{labels:legendLabels},
+          tooltip:{callbacks:{label:ctx=>{const sec=ctx.datasetIndex===0?s.team_a[ctx.dataIndex]:s.team_b[ctx.dataIndex]; return `${ctx.dataset.label}: ${ctx.raw}% (${mmss(sec)})`;}}} },
+        scales:{ x:{stacked:true, grid:{display:false}, ticks:{color:CHART_TICK}, title:{display:cfg.window!=='half', text:'match minute', color:CHART_TICK}},
+                 y:{stacked:true, min:0, max:100, grid:{color:CHART_GRID}, ticks:{color:CHART_TICK, callback:v=>v+'%'}} } } };
+  } else {
+    let data, labels, colors;
+    if(cfg.mode === 'possession'){ const lastMs=(project.possession||[]).reduce((m,x)=>Math.max(m,x.timestamp_ms),0);
+      const t = possessionTotals(Math.max(lastMs, project.position_ms||0)); data=[t.pct0||0, t.pct1||0]; labels=[teams[0],teams[1]]; colors=[ca,cb]; }
+    else if(cfg.mode === 'share'){ data=[statValue(cfg.stat, teams[0]), statValue(cfg.stat, teams[1])]; labels=[teams[0],teams[1]]; colors=[ca,cb]; }
+    else { const team=teams[cfg.team];
+      const sum = list => [].concat(list||[]).reduce((acc,st)=>acc+(project.counts[team][st]||0), 0);
+      const made = sum(cfg.made), att = sum(cfg.attempts);
+      data=[made, Math.max(0,att-made)]; labels=['successful','unsuccessful']; colors=[project.team_colors[cfg.team], project.team_colors[cfg.team]+'40']; }
+    conf = { type:'doughnut', data:{ labels, datasets:[{ data, backgroundColor:colors, borderWidth:0 }]},
+      options:{ responsive:true, maintainAspectRatio:false, cutout:'58%',
+        plugins:{ title:titlePlugin, legend:{position:'bottom', labels:legendLabels},
+          tooltip:{callbacks:{label:ctx=>{const tot=ctx.dataset.data.reduce((a,b)=>a+b,0); const pct=tot?Math.round(ctx.raw/tot*100):0; return `${ctx.label}: ${ctx.raw} (${pct}%)`;}}} } } };
+  }
+  chartInstances.push(new Chart(canvas, conf));
+}
+
+function exportGroup(items, filename){
+  const scale = 2, W = 900, PAD = 24, GAP = 20, FOOTER = 56;
+  const contentW = W - 2*PAD, colW = (contentW - GAP) / 2;
+  const place = []; let y = PAD, buf = null;
+  const flush = () => { if(!buf) return; const h = buf.cv.height*(colW/buf.cv.width); place.push({cv:buf.cv, x:PAD, y, w:colW, h}); y += h + GAP; buf = null; };
+  items.forEach(it => {
+    if(it.size !== 'half' || items.length === 1){ flush(); const h = it.cv.height*(contentW/it.cv.width); place.push({cv:it.cv, x:PAD, y, w:contentW, h}); y += h + GAP; }
+    else if(!buf){ buf = it; }
+    else { const h1 = buf.cv.height*(colW/buf.cv.width), h2 = it.cv.height*(colW/it.cv.width), rh = Math.max(h1,h2);
+      place.push({cv:buf.cv, x:PAD, y, w:colW, h:h1}); place.push({cv:it.cv, x:PAD+colW+GAP, y, w:colW, h:h2}); y += rh + GAP; buf = null; }
+  });
+  flush();
+  const totalH = y + FOOTER;
+  const master = document.createElement('canvas'); master.width = W*scale; master.height = totalH*scale;
+  const ctx = master.getContext('2d'); ctx.scale(scale, scale);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, totalH);
+  place.forEach(p => ctx.drawImage(p.cv, p.x, p.y, p.w, p.h));
+  ctx.fillStyle = '#e0e4e0'; ctx.fillRect(PAD, y - GAP/2, contentW, 1);
+  const fy = y + 14;
+  ctx.textBaseline = 'middle'; ctx.font = '500 16px sans-serif';
+  ctx.fillStyle = project.team_colors[0]; ctx.fillRect(PAD, fy-6, 12, 12);
+  ctx.fillStyle = '#2c2c2a'; ctx.textAlign = 'left'; ctx.fillText(project.teams[0], PAD+18, fy);
+  ctx.fillStyle = project.team_colors[1]; ctx.fillRect(W-PAD-12, fy-6, 12, 12);
+  ctx.fillStyle = '#2c2c2a'; ctx.textAlign = 'right'; ctx.fillText(project.teams[1], W-PAD-18, fy);
+  const score = (project.chart_score || '').trim();
+  if(score){ ctx.textAlign = 'center'; ctx.font = '500 20px sans-serif'; ctx.fillText(score, W/2, fy); }
+  const a = document.createElement('a'); a.href = master.toDataURL('image/png');
+  a.download = (filename || 'charts').replace(/[^\w-]+/g,'_') + '.png'; a.click();
+}
+
+// ============ tactical board ============
+const TB = { W:1130, H:760, fx:40, fy:40, fw:1050, fh:680, S:10 };
+const TPALETTE = ['#e6483d','#f5a623','#f8e71c','#2ecc71','#3b82f6','#ffffff','#111111'];
+let tboard = {tokens:[], marks:[]}, tTool='select', tColor='#e6483d', tDashed=false, tUndo=[], tDrag=null, tDraw=null;
+
+function tId(){ return 'x' + Math.random().toString(36).slice(2,10); }
+function tPx(x,y){ return [TB.fx + x*TB.fw, TB.fy + y*TB.fh]; }
+function tEsc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function tEventNorm(e){
+  const svg = document.getElementById('tSvg'), m = svg.getScreenCTM(); if(!m) return null;
+  const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+  const loc = pt.matrixTransform(m.inverse());
+  return { x: Math.max(0, Math.min(1, (loc.x - TB.fx)/TB.fw)), y: Math.max(0, Math.min(1, (loc.y - TB.fy)/TB.fh)) };
+}
+
+function tPitchSvg(){
+  const {fx,fy,fw,fh,S} = TB, cx = fx+fw/2, cy = fy+fh/2, g = '#4f7a4f', R = 9.15*S;
+  const box = (x,y,w,h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="${g}" stroke-width="2"/>`;
+  const dArc = (spotX, dir) => {   // dir +1 left goal (bulge right), -1 right goal (bulge left)
+    const pts = [];
+    for(let d=-53; d<=53; d+=4){ const a = (d*Math.PI/180); pts.push(`${spotX + dir*R*Math.cos(a)},${cy + R*Math.sin(a)}`); }
+    return `<polyline points="${pts.join(' ')}" fill="none" stroke="${g}" stroke-width="2"/>`;
+  };
+  return `
+    <rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" fill="#e7f1e7" stroke="${g}" stroke-width="2"/>
+    <line x1="${cx}" y1="${fy}" x2="${cx}" y2="${fy+fh}" stroke="${g}" stroke-width="2"/>
+    <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${g}" stroke-width="2"/>
+    <circle cx="${cx}" cy="${cy}" r="3" fill="${g}"/>
+    ${box(fx, cy-20.16*S, 16.5*S, 40.32*S)}${box(fx+fw-16.5*S, cy-20.16*S, 16.5*S, 40.32*S)}
+    ${box(fx, cy-9.16*S, 5.5*S, 18.32*S)}${box(fx+fw-5.5*S, cy-9.16*S, 5.5*S, 18.32*S)}
+    <circle cx="${fx+11*S}" cy="${cy}" r="3" fill="${g}"/><circle cx="${fx+fw-11*S}" cy="${cy}" r="3" fill="${g}"/>
+    ${dArc(fx+11*S, 1)}${dArc(fx+fw-11*S, -1)}
+    ${box(fx-2*S, cy-3.66*S, 2*S, 7.32*S)}${box(fx+fw, cy-3.66*S, 2*S, 7.32*S)}`;
+}
+
+function tMarkSvg(m){
+  const col = m.color || '#e6483d';
+  if(m.type === 'arrow' || m.type === 'line'){
+    const [x0,y0] = tPx(m.x0,m.y0), [x1,y1] = tPx(m.x1,m.y1);
+    const dash = m.dashed ? 'stroke-dasharray="11 9"' : '';
+    let s = `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="${col}" stroke-width="4" ${dash} stroke-linecap="round"/>`;
+    if(m.type === 'arrow'){
+      const a = Math.atan2(y1-y0, x1-x0), hl = 20, hw = 11;
+      const bx = x1-hl*Math.cos(a), by = y1-hl*Math.sin(a);
+      s += `<polygon points="${x1},${y1} ${bx-hw*Math.sin(a)},${by+hw*Math.cos(a)} ${bx+hw*Math.sin(a)},${by-hw*Math.cos(a)}" fill="${col}"/>`;
+    }
+    return `<g data-id="${m.id}" class="tmark">${s}</g>`;
+  }
+  if(m.type === 'zone'){
+    const [x0,y0] = tPx(m.x0,m.y0), [x1,y1] = tPx(m.x1,m.y1);
+    const x = Math.min(x0,x1), y = Math.min(y0,y1), w = Math.abs(x1-x0), h = Math.abs(y1-y0);
+    return `<rect data-id="${m.id}" class="tmark" x="${x}" y="${y}" width="${w}" height="${h}" fill="${col}33" stroke="${col}" stroke-width="3"/>`;
+  }
+  if(m.type === 'text'){
+    const [x,y] = tPx(m.x,m.y);
+    return `<text data-id="${m.id}" class="tmark" x="${x}" y="${y}" fill="${col}" font-size="26" font-weight="700" font-family="sans-serif" dominant-baseline="middle">${tEsc(m.text)}</text>`;
+  }
+  if(m.type === 'free'){
+    const pts = m.points.map(p => { const [px,py] = tPx(p[0],p[1]); return `${px},${py}`; }).join(' ');
+    return `<polyline data-id="${m.id}" class="tmark" points="${pts}" fill="none" stroke="${col}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }
+  return '';
+}
+
+function tTokenSvg(t){
+  const [x,y] = tPx(t.x,t.y);
+  if(t.kind === 'ball'){
+    return `<g data-id="${t.id}" class="tk-hit"><circle cx="${x}" cy="${y}" r="12" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="${x}" cy="${y}" r="4.5" fill="#111"/></g>`;
+  }
+  const col = t.team === 0 ? project.team_colors[0] : t.team === 1 ? project.team_colors[1] : '#e5e7eb';
+  const txt = t.team == null ? '#111' : '#fff';
+  const label = t.label ? `<text x="${x}" y="${y}" fill="${txt}" font-size="18" font-weight="700" font-family="sans-serif" text-anchor="middle" dominant-baseline="central">${tEsc(t.label)}</text>` : '';
+  return `<g data-id="${t.id}" class="tk-hit"><circle cx="${x}" cy="${y}" r="18" fill="${col}" stroke="#0b0b0b" stroke-width="2"/>${label}</g>`;
+}
+
+function renderTMarks(){ const g = document.getElementById('tMarks'); if(g) g.innerHTML = tboard.marks.map(tMarkSvg).join(''); }
+function renderTTokens(){ const g = document.getElementById('tTokens'); if(g) g.innerHTML = tboard.tokens.map(tTokenSvg).join(''); }
+function tRenderPreview(){
+  const p = document.getElementById('tPreview'); if(!p) return;
+  if(!tDraw){ p.innerHTML = ''; return; }
+  const m = tDraw.type === 'free' ? {id:'prev',type:'free',points:tDraw.points,color:tColor}
+    : {id:'prev',type:tDraw.type,x0:tDraw.x0,y0:tDraw.y0,x1:tDraw.x1,y1:tDraw.y1,color:tColor,dashed:tDashed};
+  p.innerHTML = tMarkSvg(m);
+}
+
+function tFindItem(id){ return tboard.tokens.find(t => t.id === id) || tboard.marks.find(m => m.id === id); }
+function tItemKind(id){ return tboard.tokens.some(t => t.id === id) ? 'token' : 'mark'; }
+function tSnapshot(){ tUndo.push(JSON.stringify(tboard)); if(tUndo.length > 40) tUndo.shift(); }
+async function tSave(){
+  try{
+    const r = await fetch('/api/config', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({video: currentVideo, set_board: tboard})});
+    const p = await r.json(); project = p; tboard = JSON.parse(JSON.stringify(p.board || {tokens:[],marks:[]}));
+  }catch(e){}
+}
+
+function tMoveItemBy(item, orig, dx, dy){
+  const c = v => Math.max(0, Math.min(1, v));
+  if('x' in item && 'y' in item){ item.x = c(orig.x+dx); item.y = c(orig.y+dy); }
+  if('x0' in item){ item.x0 = c(orig.x0+dx); item.y0 = c(orig.y0+dy); item.x1 = c(orig.x1+dx); item.y1 = c(orig.y1+dy); }
+  if(item.points){ item.points = orig.points.map(p => [c(p[0]+dx), c(p[1]+dy)]); }
+}
+
+function tPointerDown(e){
+  const svg = document.getElementById('tSvg'); const n = tEventNorm(e); if(!n) return;
+  const tool = tTool;
+  if(tool === 'select' || tool === 'erase'){
+    const el = e.target.closest('[data-id]'); if(!el) return;
+    const id = el.dataset.id, item = tFindItem(id); if(!item) return;
+    if(tool === 'erase'){ tSnapshot(); tboard.tokens = tboard.tokens.filter(t => t.id !== id); tboard.marks = tboard.marks.filter(m => m.id !== id); renderTMarks(); renderTTokens(); tSave(); return; }
+    tSnapshot();
+    tDrag = {id, item, kind: tItemKind(id), startN: n, orig: JSON.parse(JSON.stringify(item))};
+    svg.setPointerCapture(e.pointerId); return;
+  }
+  if(tool === 'ball' || tool.startsWith('player-')){
+    tSnapshot();
+    const team = tool === 'player-a' ? 0 : tool === 'player-b' ? 1 : null;
+    tboard.tokens.push({id: tId(), kind: tool === 'ball' ? 'ball' : 'player', team, label:'', x:n.x, y:n.y});
+    renderTTokens(); tSave(); return;
+  }
+  if(tool === 'text'){
+    const txt = prompt('Text label:'); if(!txt) return;
+    tSnapshot(); tboard.marks.push({id: tId(), type:'text', x:n.x, y:n.y, text: txt.slice(0,80), color: tColor});
+    renderTMarks(); tSave(); return;
+  }
+  if(tool === 'free'){ tDraw = {type:'free', points:[[n.x,n.y]]}; svg.setPointerCapture(e.pointerId); return; }
+  if(tool === 'arrow' || tool === 'line' || tool === 'zone'){
+    tDraw = {type: tool, x0:n.x, y0:n.y, x1:n.x, y1:n.y}; svg.setPointerCapture(e.pointerId); return;
+  }
+}
+function tPointerMove(e){
+  if(tDrag){
+    const n = tEventNorm(e); if(!n) return;
+    tMoveItemBy(tDrag.item, tDrag.orig, n.x - tDrag.startN.x, n.y - tDrag.startN.y);
+    tDrag.kind === 'token' ? renderTTokens() : renderTMarks(); return;
+  }
+  if(tDraw){
+    const n = tEventNorm(e); if(!n) return;
+    if(tDraw.type === 'free') tDraw.points.push([n.x, n.y]); else { tDraw.x1 = n.x; tDraw.y1 = n.y; }
+    tRenderPreview(); return;
+  }
+}
+function tPointerUp(e){
+  if(tDrag){ tDrag = null; tSave(); return; }
+  if(tDraw){
+    const d = tDraw; tDraw = null; const pv = document.getElementById('tPreview'); if(pv) pv.innerHTML = '';
+    if(d.type === 'free'){ if(d.points.length >= 2){ tSnapshot(); tboard.marks.push({id:tId(),type:'free',points:d.points,color:tColor}); renderTMarks(); tSave(); } }
+    else if(Math.hypot(d.x1-d.x0, d.y1-d.y0) > 0.012){
+      tSnapshot(); const m = {id:tId(), type:d.type, x0:d.x0, y0:d.y0, x1:d.x1, y1:d.y1, color:tColor};
+      if(d.type !== 'zone') m.dashed = tDashed;
+      tboard.marks.push(m); renderTMarks(); tSave();
+    }
+  }
+}
+function tDblClick(e){
+  const el = e.target.closest('[data-id]'); if(!el) return;
+  const item = tFindItem(el.dataset.id); if(!item) return;
+  if(item.kind === 'player'){ const v = prompt('Player number / label:', item.label || ''); if(v !== null){ tSnapshot(); item.label = v.slice(0,16); renderTTokens(); tSave(); } }
+  else if(item.type === 'text'){ const v = prompt('Text:', item.text || ''); if(v !== null){ tSnapshot(); item.text = v.slice(0,80); renderTMarks(); tSave(); } }
+}
+
+function tSetTool(tool){
+  tTool = tool;
+  document.querySelectorAll('#tbar .tbtn[data-tool]').forEach(b => b.classList.toggle('on', b.dataset.tool === tool));
+  const hints = {select:'Drag to move an item. Double-click a player or text to edit it.', erase:'Click an item to delete it.',
+    'player-a':'Click the pitch to place a player. Double-click it to add a number.', 'player-b':'Click the pitch to place a player. Double-click it to add a number.',
+    'player-n':'Click to place a neutral token.', ball:'Click to place the ball.', arrow:'Drag to draw an arrow (run / pass).',
+    line:'Drag to draw a straight line.', zone:'Drag to draw a rectangle / zone.', text:'Click to place a text label.', free:'Drag to draw freehand.'};
+  document.getElementById('tHint').textContent = hints[tool] || '';
+}
+function tSwatches(){
+  const w = document.getElementById('tSwatches');
+  w.innerHTML = TPALETTE.map(c => `<span class="tsw ${c===tColor?'on':''}" data-c="${c}" style="background:${c}"></span>`).join('');
+  w.querySelectorAll('.tsw').forEach(s => s.onclick = () => { tColor = s.dataset.c; tSwatches(); });
+}
+function renderTactics(){
+  tboard = JSON.parse(JSON.stringify(project.board || {tokens:[], marks:[]}));
+  tUndo = []; tDrag = tDraw = null;
+  const svg = document.getElementById('tSvg');
+  svg.setAttribute('viewBox', `0 0 ${TB.W} ${TB.H}`);
+  svg.innerHTML = tPitchSvg() + '<g id="tMarks"></g><g id="tPreview"></g><g id="tTokens"></g>';
+  renderTMarks(); renderTTokens(); tSwatches();
+  document.getElementById('tPlayerA').textContent = '＋ ' + project.teams[0];
+  document.getElementById('tPlayerB').textContent = '＋ ' + project.teams[1];
+  document.getElementById('tPlayerA').style.borderColor = project.team_colors[0];
+  document.getElementById('tPlayerB').style.borderColor = project.team_colors[1];
+  tSetTool(tTool);
+  svg.onpointerdown = tPointerDown; svg.onpointermove = tPointerMove;
+  svg.onpointerup = tPointerUp; svg.ondblclick = tDblClick;
+}
+document.querySelectorAll('#tbar .tbtn[data-tool]').forEach(b => b.onclick = () => tSetTool(b.dataset.tool));
+document.getElementById('tDash').onclick = () => { tDashed = !tDashed; document.getElementById('tDash').classList.toggle('on', tDashed); };
+document.getElementById('tUndoBtn').onclick = () => { if(!tUndo.length) return; tboard = JSON.parse(tUndo.pop()); renderTMarks(); renderTTokens(); tSave(); };
+document.getElementById('tClear').onclick = () => { if(!confirm('Clear the whole board?')) return; tSnapshot(); tboard = {tokens:[], marks:[]}; renderTMarks(); renderTTokens(); tSave(); };
+document.getElementById('tExport').onclick = () => {
+  const svg = document.getElementById('tSvg');
+  const xml = new XMLSerializer().serializeToString(svg);
+  const url = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(xml)));
+  const img = new Image();
+  img.onload = () => {
+    const scale = 2, cv = document.createElement('canvas'); cv.width = TB.W*scale; cv.height = TB.H*scale;
+    const ctx = cv.getContext('2d'); ctx.fillStyle = '#0e1a13'; ctx.fillRect(0,0,cv.width,cv.height);
+    ctx.drawImage(img, 0, 0, cv.width, cv.height);
+    cv.toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = (currentVideo||'board').replace(/\.mp4$/i,'') + '_board.png'; a.click(); });
+  };
+  img.src = url;
+};
 
 init();
 </script>

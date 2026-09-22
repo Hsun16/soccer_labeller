@@ -1,0 +1,53 @@
+{
+  "template": "report_template.pptx",
+  "canvas_target_px": 1376,
+  "charts": [
+    {
+      "file": "stats_overview.png",
+      "media": "ppt/media/image2.png",
+      "cfg": {
+        "id": "rpt_h2h", "type": "headtohead", "size": "tall",
+        "title": "Match stats", "labelSize": "auto", "legendSize": 12,
+        "stats": ["shots", "shots_on_target", "__xg__", "combo:Attacks",
+                  "combo:Corners", "aerial_duel_won", "tackle",
+                  "interception", "clearance", "__possession__"]
+      }
+    },
+    {
+      "file": "xg_timeline.png",
+      "media": "ppt/media/image4.png",
+      "cfg": {
+        "id": "rpt_xg", "type": "cumulative", "size": "tall",
+        "title": "xG Timeline", "stats": [], "xg": true,
+        "goalStat": "goal", "legendSize": 12
+      }
+    },
+    {
+      "file": "match_momentum.png",
+      "media": "ppt/media/image3.png",
+      "cfg": {
+        "id": "rpt_mom", "type": "timeline", "size": "full",
+        "title": "Match Momentum",
+        "stats": ["attack_left", "attack_right", "attack_center"],
+        "bin": 10, "xg": false, "goalStat": "goal"
+      }
+    },
+    {
+      "file": "attack_sides.png",
+      "media": "ppt/media/image6.png",
+      "cfg": {
+        "id": "rpt_att", "type": "attacksides", "size": "full",
+        "title": "Attack sides", "left": "attack_left",
+        "center": "attack_center", "right": "attack_right",
+        "teamPick": "both", "legendSize": 12
+      }
+    }
+  ],
+  "shot_maps": {"file": "shot_maps.png", "media": "ppt/media/image5.png"},
+  "shot_legend": {"file": "shot_legend.png", "media": "ppt/media/image7.png"},
+  "possession_boxplot": {
+    "file": "possession_boxplot.png",
+    "media": "ppt/media/image8.png",
+    "min_spell_sec": 2
+  }
+}
