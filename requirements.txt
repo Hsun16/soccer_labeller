@@ -1,0 +1,5 @@
+Flask>=3.0
+
+# Optional — only needed to score shots with the neural-net xG model
+# (Settings ▸ xG model ▸ Neural net). The logistic model needs nothing extra.
+# torch

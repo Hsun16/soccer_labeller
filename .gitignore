@@ -1,0 +1,12 @@
+match_samples/
+stats/
+projects/
+backup/
+__pycache__/
+plots/
+static/
+visualizer.ipynb
+xg_coefficients.json
+report_template.pptx
+xg_model/*
+!xg_model/config.yaml

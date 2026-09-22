@@ -1,0 +1,71 @@
+{
+  "outputSlides": [
+    {"outputSlide":1,"sourceSlide":1,"reuseMode":"duplicate-slide","narrativeRole":"brand cover","editTargets":[
+      {"sourceElementId":"sh/7qp4be9c","action":"rewrite"},
+      {"sourceElementId":"sh/k3yl0zql","action":"rewrite"},
+      {"sourceElementId":"im/ri9kvmxs","action":"keep"}
+    ]},
+    {"outputSlide":2,"sourceSlide":2,"reuseMode":"duplicate-slide","narrativeRole":"summary comparison chart","editTargets":[
+      {"sourceElementId":"sh/w3i1sfa9","action":"rewrite"},
+      {"sourceElementId":"im/nix0be18","action":"replace"},
+      {"sourceElementId":"im/mhoz29kn","action":"keep"}
+    ]},
+    {"outputSlide":3,"sourceSlide":3,"reuseMode":"duplicate-slide","narrativeRole":"timeline analysis","editTargets":[
+      {"sourceElementId":"sh/cza94vmx","action":"rewrite"},
+      {"sourceElementId":"sh/83ulovat","action":"rewrite"},
+      {"sourceElementId":"im/hon6lgv6","action":"replace"},
+      {"sourceElementId":"im/gne5cvel","action":"replace"},
+      {"sourceElementId":"im/ulcnalwf","action":"keep"}
+    ]},
+    {"outputSlide":4,"sourceSlide":4,"reuseMode":"duplicate-slide","narrativeRole":"shot map and channel analysis","editTargets":[
+      {"sourceElementId":"sh/1cj2d8b6","action":"rewrite"},
+      {"sourceElementId":"im/p0ju1gjm","action":"replace"},
+      {"sourceElementId":"im/q1sbal07","action":"replace"},
+      {"sourceElementId":"im/b2lc3q1s","action":"replace"},
+      {"sourceElementId":"im/d43u50jy","action":"delete"},
+      {"sourceElementId":"im/c3utcvid","action":"keep"}
+    ]},
+    {"outputSlide":5,"sourceSlide":5,"reuseMode":"duplicate-slide","narrativeRole":"possession analysis","editTargets":[
+      {"sourceElementId":"sh/032tgr6d","action":"rewrite"},
+      {"sourceElementId":"sh/yhkbe1o7","action":"rewrite"},
+      {"sourceElementId":"im/apobah8v","action":"replace"},
+      {"sourceElementId":"im/bqxsjm9g","action":"keep"}
+    ]},
+    {"outputSlide":6,"sourceSlide":6,"reuseMode":"duplicate-slide","narrativeRole":"analysis synthesis","editTargets":[
+      {"sourceElementId":"sh/87ipkzal","action":"rewrite"},
+      {"sourceElementId":"sh/ml07i9sv","action":"rewrite"},
+      {"sourceElementId":"im/mxg36h47","action":"keep"}
+    ]},
+    {"outputSlide":7,"sourceSlide":7,"reuseMode":"duplicate-slide","narrativeRole":"wide-play analysis","editTargets":[
+      {"sourceElementId":"sh/l0vuh0rm","action":"rewrite"},
+      {"sourceElementId":"sh/baxkjqlk","action":"rewrite"},
+      {"sourceElementId":"sh/cbq1sv25","action":"rewrite"},
+      {"sourceElementId":"im/k36xo3i5","action":"replace"},
+      {"sourceElementId":"im/y1ofmd0z","action":"delete"},
+      {"sourceElementId":"im/j2xwvyhk","action":"replace"},
+      {"sourceElementId":"im/lozex8zq","action":"keep"}
+    ]},
+    {"outputSlide":8,"sourceSlide":8,"reuseMode":"duplicate-slide","narrativeRole":"finishing analysis","editTargets":[
+      {"sourceElementId":"sh/sjix0zy1","action":"rewrite"},
+      {"sourceElementId":"sh/zipwbmdc","action":"rewrite"},
+      {"sourceElementId":"im/mt47qt0z","action":"replace"},
+      {"sourceElementId":"im/yp8rix47","action":"delete"},
+      {"sourceElementId":"im/nud8jy1k","action":"keep"}
+    ]},
+    {"outputSlide":9,"sourceSlide":9,"reuseMode":"duplicate-slide","narrativeRole":"buildup and threat analysis","editTargets":[
+      {"sourceElementId":"sh/ofq5svm5","action":"rewrite"},
+      {"sourceElementId":"sh/p0ji9kf2","action":"rewrite"},
+      {"sourceElementId":"tb/orel03al","action":"rewrite"},
+      {"sourceElementId":"im/7mxozqdo","action":"replace"},
+      {"sourceElementId":"im/hcz65kbq","action":"keep"}
+    ]},
+    {"outputSlide":10,"sourceSlide":10,"reuseMode":"duplicate-slide","narrativeRole":"tactical evidence and closing analysis","editTargets":[
+      {"sourceElementId":"sh/kzu5c32t","action":"rewrite"},
+      {"sourceElementId":"sh/ydcnatkn","action":"rewrite"},
+      {"sourceElementId":"im/fm9sbalk","action":"replace"},
+      {"sourceElementId":"im/fip0zylc","action":"replace"},
+      {"sourceElementId":"im/uhgz6tkr","action":"delete"},
+      {"sourceElementId":"im/ulgr2p4z","action":"keep"}
+    ]}
+  ]
+}
